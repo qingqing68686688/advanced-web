@@ -1,15 +1,14 @@
 {
-  "name": "backend",
+  "name": "wanghl-zhihu-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "知乎的模仿与制作 - 后端服务（王慧琳 24001010731）",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "王慧琳",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",

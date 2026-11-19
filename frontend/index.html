@@ -1,50 +1,170 @@
 <!--
-  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE
+  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE DeepSeek-V4.1-Flash
 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>知乎的模仿与制作 - 首页</title>
+  <meta name="description" content="知乎的模仿与制作 - 王慧琳 24001010731 高级网页设计课程项目">
+  <title>知乎的模仿与制作 | 项目首页</title>
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-  <canvas id="Wanghl_canvas" class="Wanghl_canvas-bg"></canvas>
+  <canvas id="Wanghl_canvas" class="Wanghl_canvas"></canvas>
+  <div class="Wanghl_glow Wanghl_glow--one"></div>
+  <div class="Wanghl_glow Wanghl_glow--two"></div>
 
   <div class="Wanghl_container">
-    <!-- 头部信息卡片 -->
-    <header class="Wanghl_header-card">
-      <h1 class="Wanghl_project-title">知乎的模仿与制作</h1>
-      <span class="Wanghl_project-category">项目类别：模仿</span>
-      <div class="Wanghl_student-info">
-        <div class="Wanghl_info-item">
-          <span class="Wanghl_label">姓名：</span>
-          <span class="Wanghl_value">王慧琳</span>
-        </div>
-        <div class="Wanghl_info-item">
-          <span class="Wanghl_label">学号：</span>
-          <span class="Wanghl_value">24001010731</span>
-        </div>
+    <header class="Wanghl_hero">
+      <p class="Wanghl_hero-eyebrow">高级网页设计 · 课程项目</p>
+      <h1 class="Wanghl_hero-title">知乎的模仿与制作</h1>
+      <p class="Wanghl_hero-desc">
+        以原生 HTML、CSS、JavaScript 复刻知乎的问答社区体验，配合 Node.js + Express 与 MySQL 完成后端服务。
+      </p>
+      <div class="Wanghl_hero-meta">
+        <span class="Wanghl_chip Wanghl_chip--solid">项目类别：模仿</span>
+        <span class="Wanghl_chip">姓名：王慧琳</span>
+        <span class="Wanghl_chip">学号：24001010731</span>
       </div>
     </header>
 
-    <!-- 导航区域 -->
-    <section class="Wanghl_nav-section">
-      <h2 class="Wanghl_nav-title">页面导航</h2>
-      <div class="Wanghl_nav-grid" id="Wanghl_navGrid">
-        <a href="index.html" class="Wanghl_nav-card">
-          <div class="Wanghl_card-icon">🏠</div>
-          <div class="Wanghl_card-title">项目首页</div>
-          <div class="Wanghl_card-desc">项目概览与页面导航入口</div>
-        </a>
-        <div class="Wanghl_empty-tip">更多页面开发中，敬请期待...</div>
-      </div>
-    </section>
+    <main class="Wanghl_main">
+      <section class="Wanghl_panel Wanghl_panel--nav">
+        <div class="Wanghl_panel-head">
+          <div>
+            <h2 class="Wanghl_panel-title">页面导航</h2>
+            <p class="Wanghl_panel-sub">点击卡片进入对应页面</p>
+          </div>
+          <span class="Wanghl_counter" id="Wanghl_pageCount">已完成 1 个页面</span>
+        </div>
 
-    <!-- 页脚 -->
+        <div class="Wanghl_nav-grid" id="Wanghl_navGrid">
+          <a class="Wanghl_nav-card" href="index.html">
+            <span class="Wanghl_nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 10.5 12 3l9 7.5"></path>
+                <path d="M5 9.5V21h14V9.5"></path>
+                <path d="M9.5 21v-6h5v6"></path>
+              </svg>
+            </span>
+            <span class="Wanghl_nav-body">
+              <span class="Wanghl_nav-title">项目首页</span>
+              <span class="Wanghl_nav-desc">项目信息总览与全部页面导航入口</span>
+            </span>
+            <span class="Wanghl_nav-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <h3 class="Wanghl_planned-title">规划中的页面</h3>
+        <div class="Wanghl_nav-grid Wanghl_nav-grid--planned">
+          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
+            <span class="Wanghl_nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <path d="M12 11v6"></path>
+                <path d="M9 14h6"></path>
+                <path d="M8 3h8v4H8z"></path>
+              </svg>
+            </span>
+            <span class="Wanghl_nav-body">
+              <span class="Wanghl_nav-title">登录 / 注册</span>
+              <span class="Wanghl_nav-desc">账号登录与注册表单</span>
+            </span>
+            <span class="Wanghl_nav-tag">规划中</span>
+          </div>
+
+          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
+            <span class="Wanghl_nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"></path>
+                <path d="M9 11h6"></path>
+                <path d="M9 14.5h4"></path>
+              </svg>
+            </span>
+            <span class="Wanghl_nav-body">
+              <span class="Wanghl_nav-title">问题与回答</span>
+              <span class="Wanghl_nav-desc">问题列表、详情与回答展示</span>
+            </span>
+            <span class="Wanghl_nav-tag">规划中</span>
+          </div>
+
+          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
+            <span class="Wanghl_nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"></path>
+              </svg>
+            </span>
+            <span class="Wanghl_nav-body">
+              <span class="Wanghl_nav-title">个人主页</span>
+              <span class="Wanghl_nav-desc">用户资料、动态与收藏</span>
+            </span>
+            <span class="Wanghl_nav-tag">规划中</span>
+          </div>
+
+          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
+            <span class="Wanghl_nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.6 8.6 15.4 3.4a2 2 0 0 0-2.8 0L3.4 12.6a2 2 0 0 0 0 2.8l5.2 5.2a2 2 0 0 0 2.8 0l9.2-9.2a2 2 0 0 0 0-2.8z"></path>
+                <path d="M7.5 10.5h4"></path>
+                <circle cx="8.5" cy="15.5" r="1.2"></circle>
+              </svg>
+            </span>
+            <span class="Wanghl_nav-body">
+              <span class="Wanghl_nav-title">话题广场</span>
+              <span class="Wanghl_nav-desc">按话题浏览内容与关注</span>
+            </span>
+            <span class="Wanghl_nav-tag">规划中</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="Wanghl_side">
+        <section class="Wanghl_panel">
+          <h2 class="Wanghl_panel-title">项目概览</h2>
+          <ul class="Wanghl_info-list">
+            <li class="Wanghl_info-row"><span>项目名称</span><strong>知乎的模仿与制作</strong></li>
+            <li class="Wanghl_info-row"><span>项目类别</span><strong>模仿</strong></li>
+            <li class="Wanghl_info-row"><span>姓　　名</span><strong>王慧琳</strong></li>
+            <li class="Wanghl_info-row"><span>学　　号</span><strong>24001010731</strong></li>
+          </ul>
+          <div class="Wanghl_stack">
+            <span class="Wanghl_stack-item">HTML5</span>
+            <span class="Wanghl_stack-item">CSS3</span>
+            <span class="Wanghl_stack-item">JavaScript</span>
+            <span class="Wanghl_stack-item">Node.js</span>
+            <span class="Wanghl_stack-item">Express</span>
+            <span class="Wanghl_stack-item">MySQL</span>
+          </div>
+        </section>
+
+        <section class="Wanghl_panel">
+          <h2 class="Wanghl_panel-title">服务状态</h2>
+          <ul class="Wanghl_status-list">
+            <li class="Wanghl_status-row">
+              <span class="Wanghl_status-dot Wanghl_status-dot--on"></span>
+              <span>前端页面</span>
+              <em>正常</em>
+            </li>
+            <li class="Wanghl_status-row">
+              <span class="Wanghl_status-dot" id="Wanghl_apiDot"></span>
+              <span>后端接口</span>
+              <em id="Wanghl_apiText">检测中…</em>
+            </li>
+            <li class="Wanghl_status-row">
+              <span class="Wanghl_status-dot"></span>
+              <span>数据库</span>
+              <em>待接入</em>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
     <footer class="Wanghl_footer">
-      <p>© 2026 王慧琳 | 学号 24001010731 | 高级网页设计课程项目</p>
+      <p>© 2026 王慧琳 · 24001010731 · 知乎的模仿与制作</p>
+      <p class="Wanghl_footer-sub">高级网页设计课程项目 · 原生前端 + Express + MySQL</p>
     </footer>
   </div>
 
