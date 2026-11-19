@@ -1,0 +1,263 @@
+/*
+ * 姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: #f6f6f6;
+  color: #1a1a1a;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Canvas 背景 */
+.Wanghl_canvas-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #0084ff 0%, #0066cc 50%, #003d7a 100%);
+}
+
+/* 主容器 */
+.Wanghl_container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 头部信息卡片 */
+.Wanghl_header-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+  animation: Wanghl_fadeInDown 0.8s ease-out;
+}
+
+.Wanghl_project-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0084ff;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.Wanghl_project-category {
+  display: inline-block;
+  background: linear-gradient(135deg, #0084ff, #00a1ff);
+  color: #fff;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.Wanghl_student-info {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.Wanghl_info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #666;
+}
+
+.Wanghl_info-item .Wanghl_label {
+  color: #999;
+}
+
+.Wanghl_info-item .Wanghl_value {
+  color: #333;
+  font-weight: 500;
+}
+
+/* 导航区域 */
+.Wanghl_nav-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: Wanghl_fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.Wanghl_nav-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #0084ff;
+  display: inline-block;
+}
+
+.Wanghl_nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.Wanghl_nav-card {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, #f8faff 0%, #eef5ff 100%);
+  border: 1px solid #e0eaff;
+  border-radius: 12px;
+  padding: 24px 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.Wanghl_nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 132, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.Wanghl_nav-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 132, 255, 0.2);
+  border-color: #0084ff;
+}
+
+.Wanghl_nav-card:hover::before {
+  left: 100%;
+}
+
+.Wanghl_card-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #0084ff, #00a1ff);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.Wanghl_card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.Wanghl_card-desc {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.5;
+}
+
+.Wanghl_empty-tip {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+/* 页脚 */
+.Wanghl_footer {
+  text-align: center;
+  padding: 30px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  margin-top: 40px;
+  animation: Wanghl_fadeIn 1s ease-out 0.4s both;
+}
+
+/* 动画 */
+@keyframes Wanghl_fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes Wanghl_fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes Wanghl_fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 响应式 */
+@media (max-width: 640px) {
+  .Wanghl_container {
+    padding: 20px 12px;
+  }
+
+  .Wanghl_header-card {
+    padding: 24px 20px;
+  }
+
+  .Wanghl_project-title {
+    font-size: 26px;
+  }
+
+  .Wanghl_student-info {
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  .Wanghl_nav-section {
+    padding: 24px 20px;
+  }
+
+  .Wanghl_nav-grid {
+    grid-template-columns: 1fr;
+  }
+}
