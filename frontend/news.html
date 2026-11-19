@@ -1,0 +1,120 @@
+<!--
+  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE DeepSeek-V4.1-Flash
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="知乎的模仿与制作 - 科技新闻列表（王慧琳 24001010731）">
+  <title>科技新闻 | 知乎的模仿与制作</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+  <canvas id="Wanghl_canvas" class="Wanghl_canvas"></canvas>
+  <div class="Wanghl_glow Wanghl_glow--one"></div>
+  <div class="Wanghl_glow Wanghl_glow--two"></div>
+
+  <div class="Wanghl_container">
+    <header class="Wanghl_hero Wanghl_hero--compact">
+      <p class="Wanghl_hero-eyebrow">高级网页设计 · 课程项目</p>
+      <h1 class="Wanghl_hero-title Wanghl_hero-title--sm">科技新闻</h1>
+      <p class="Wanghl_hero-desc">新闻数据存储在 MySQL 数据表 Wanghl_tech_news 中，由后端接口读取并渲染到本页面。</p>
+      <div class="Wanghl_hero-meta">
+        <span class="Wanghl_chip Wanghl_chip--solid">项目类别：模仿</span>
+        <span class="Wanghl_chip">姓名：王慧琳</span>
+        <span class="Wanghl_chip">学号：24001010731</span>
+      </div>
+    </header>
+
+    <main class="Wanghl_news-layout">
+      <section class="Wanghl_panel Wanghl_news-main">
+        <div class="Wanghl_news-head">
+          <div>
+            <h2 class="Wanghl_panel-title">新闻列表</h2>
+            <p class="Wanghl_panel-sub">数据来自 GET /api/news 接口</p>
+          </div>
+          <span class="Wanghl_news-total" id="Wanghl_newsTotal">加载中…</span>
+        </div>
+
+        <form class="Wanghl_search" id="Wanghl_searchForm">
+          <input
+            class="Wanghl_input"
+            id="Wanghl_keyword"
+            type="search"
+            placeholder="搜索新闻标题或摘要，例如：大模型"
+            maxlength="50"
+            aria-label="搜索新闻"
+          >
+          <button class="Wanghl_search-btn" type="submit">搜索</button>
+        </form>
+
+        <ul class="Wanghl_news-list" id="Wanghl_newsList">
+          <li class="Wanghl_skeleton">
+            <div class="Wanghl_skeleton-line Wanghl_skeleton-line--title"></div>
+            <div class="Wanghl_skeleton-line"></div>
+            <div class="Wanghl_skeleton-line Wanghl_skeleton-line--short"></div>
+          </li>
+          <li class="Wanghl_skeleton">
+            <div class="Wanghl_skeleton-line Wanghl_skeleton-line--title"></div>
+            <div class="Wanghl_skeleton-line"></div>
+            <div class="Wanghl_skeleton-line Wanghl_skeleton-line--short"></div>
+          </li>
+        </ul>
+
+        <div class="Wanghl_pager" id="Wanghl_pager" hidden>
+          <button class="Wanghl_pager-btn" id="Wanghl_prevPage" type="button">上一页</button>
+          <span class="Wanghl_pager-info" id="Wanghl_pageInfo">第 1 / 1 页</span>
+          <button class="Wanghl_pager-btn" id="Wanghl_nextPage" type="button">下一页</button>
+        </div>
+      </section>
+
+      <aside class="Wanghl_side">
+        <section class="Wanghl_panel">
+          <h2 class="Wanghl_panel-title">后端接口</h2>
+          <a
+            class="Wanghl_api-link"
+            id="Wanghl_apiLink"
+            href="/api/news"
+            target="_blank"
+            rel="noopener"
+          >GET /api/news</a>
+          <p class="Wanghl_api-note">
+            支持参数：<code>page</code>、<code>pageSize</code>、<code>category</code>、<code>keyword</code>，
+            点击链接可在新窗口查看原始 JSON 数据。
+          </p>
+          <button class="Wanghl_json-toggle" id="Wanghl_jsonToggle" type="button">查看当前请求的原始 JSON</button>
+          <pre class="Wanghl_json" id="Wanghl_json" hidden></pre>
+        </section>
+
+        <section class="Wanghl_panel">
+          <h2 class="Wanghl_panel-title">新闻分类</h2>
+          <ul class="Wanghl_cat-list" id="Wanghl_catList">
+            <li><button class="Wanghl_cat-btn Wanghl_cat-btn--active" type="button" data-category="">全部<span class="Wanghl_cat-count">—</span></button></li>
+          </ul>
+        </section>
+
+        <section class="Wanghl_panel">
+          <h2 class="Wanghl_panel-title">数据说明</h2>
+          <ul class="Wanghl_tips">
+            <li>数据表：Wanghl_zhihu.Wanghl_tech_news</li>
+            <li>字段包含标题、摘要、来源、作者、分类、标签、浏览量、发布时间。</li>
+            <li>列表按发布时间倒序排列，默认每页 10 条。</li>
+            <li>接口返回内容与错误信息会输出到浏览器控制台。</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="Wanghl_footer">
+      <p>© 2026 王慧琳 · 24001010731 · 知乎的模仿与制作</p>
+      <p class="Wanghl_footer-sub">高级网页设计课程项目 · 原生前端 + Express + MySQL</p>
+    </footer>
+  </div>
+
+  <script src="js/Wanghl_canvas.js"></script>
+  <script src="js/news.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!--
+  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE DeepSeek-V4.1-Flash
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="知乎的模仿与制作 - 数据库连接测试（王慧琳 24001010731）">
+  <title>数据库连接 | 知乎的模仿与制作</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/database.css">
+</head>
+<body>
+  <canvas id="Wanghl_canvas" class="Wanghl_canvas"></canvas>
+  <div class="Wanghl_glow Wanghl_glow--one"></div>
+  <div class="Wanghl_glow Wanghl_glow--two"></div>
+
+  <div class="Wanghl_container">
+    <header class="Wanghl_hero Wanghl_hero--compact">
+      <p class="Wanghl_hero-eyebrow">高级网页设计 · 课程项目</p>
+      <h1 class="Wanghl_hero-title Wanghl_hero-title--sm">数据库连接</h1>
+      <p class="Wanghl_hero-desc">输入 MySQL 用户名与密码，测试后端与数据库之间的连通性。</p>
+      <div class="Wanghl_hero-meta">
+        <span class="Wanghl_chip Wanghl_chip--solid">项目类别：模仿</span>
+        <span class="Wanghl_chip">姓名：王慧琳</span>
+        <span class="Wanghl_chip">学号：24001010731</span>
+      </div>
+    </header>
+
+    <main class="Wanghl_db-layout">
+      <section class="Wanghl_panel Wanghl_panel--form">
+        <div class="Wanghl_panel-head">
+          <div>
+            <h2 class="Wanghl_panel-title">连接信息</h2>
+            <p class="Wanghl_panel-sub">账号仅用于本次连接测试，不会被保存</p>
+          </div>
+          <span class="Wanghl_counter" id="Wanghl_dbTarget">MySQL</span>
+        </div>
+
+        <form id="Wanghl_dbForm" class="Wanghl_form" novalidate>
+          <div class="Wanghl_field">
+            <label class="Wanghl_field-label" for="Wanghl_dbUser">用户名</label>
+            <input
+              class="Wanghl_input"
+              id="Wanghl_dbUser"
+              name="user"
+              type="text"
+              value="root"
+              placeholder="请输入数据库用户名"
+              autocomplete="username"
+              maxlength="64"
+              required
+            >
+          </div>
+
+          <div class="Wanghl_field">
+            <label class="Wanghl_field-label" for="Wanghl_dbPassword">密码</label>
+            <div class="Wanghl_input-wrap">
+              <input
+                class="Wanghl_input"
+                id="Wanghl_dbPassword"
+                name="password"
+                type="password"
+                value="123456"
+                placeholder="请输入数据库密码"
+                autocomplete="current-password"
+                maxlength="128"
+              >
+              <button class="Wanghl_eye" id="Wanghl_togglePwd" type="button" aria-label="显示或隐藏密码">显示</button>
+            </div>
+          </div>
+
+          <div class="Wanghl_form-actions">
+            <button class="Wanghl_btn Wanghl_btn--primary" id="Wanghl_dbSubmit" type="submit">测试连接</button>
+            <button class="Wanghl_btn Wanghl_btn--ghost" id="Wanghl_dbReset" type="reset">重置</button>
+            <a class="Wanghl_btn Wanghl_btn--link" href="index.html">返回首页</a>
+          </div>
+        </form>
+
+        <div class="Wanghl_result" id="Wanghl_dbResult" role="status" aria-live="polite">
+          <p class="Wanghl_result-placeholder">尚未测试，点击“测试连接”开始检测。</p>
+        </div>
+      </section>
+
+      <aside class="Wanghl_side">
+        <section class="Wanghl_panel">
+          <h2 class="Wanghl_panel-title">连接说明</h2>
+          <ul class="Wanghl_info-list">
+            <li class="Wanghl_info-row"><span>数据库类型</span><strong>MySQL</strong></li>
+            <li class="Wanghl_info-row"><span>主机地址</span><strong id="Wanghl_dbHost">读取中…</strong></li>
+            <li class="Wanghl_info-row"><span>端口</span><strong id="Wanghl_dbPort">读取中…</strong></li>
+            <li class="Wanghl_info-row"><span>目标数据库</span><strong id="Wanghl_dbName">读取中…</strong></li>
+            <li class="Wanghl_info-row"><span>测试接口</span><strong>POST /api/db/test</strong></li>
+          </ul>
+        </section>
+
+        <section class="Wanghl_panel">
+          <h2 class="Wanghl_panel-title">提示</h2>
+          <ul class="Wanghl_tips">
+            <li>默认账号为 root / 123456，可直接测试。</li>
+            <li>主机地址与目标数据库来自后端 .env 配置，前端不可修改。</li>
+            <li>密码只参与本次连接，不会写入数据库或日志。</li>
+            <li>测试结果与错误信息会同步输出到浏览器控制台。</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="Wanghl_footer">
+      <p>© 2026 王慧琳 · 24001010731 · 知乎的模仿与制作</p>
+      <p class="Wanghl_footer-sub">高级网页设计课程项目 · 原生前端 + Express + MySQL</p>
+    </footer>
+  </div>
+
+  <script src="js/Wanghl_canvas.js"></script>
+  <script src="js/database.js"></script>
+</body>
+</html>

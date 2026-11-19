@@ -18,7 +18,7 @@
 
 本项目以知乎问答社区为参考对象，使用原生前端技术还原其页面结构与交互体验，后端采用
 Node.js + Express 提供 `/api/` 前缀的 RESTful 接口，并通过 `express.static` 托管前端页面。
-当前已完成项目首页（含 Canvas 粒子背景动画与页面导航），其余功能页面正在规划中。
+当前已完成项目首页（含 Canvas 粒子背景动画与页面导航）、数据库连接测试、科技新闻列表与图文列表页面，其余功能页面正在规划中。
 
 ## 目录结构
 
@@ -35,6 +35,7 @@ Node.js + Express 提供 `/api/` 前缀的 RESTful 接口，并通过 `express.s
 │   ├── controllers/          # 控制器
 │   ├── models/               # 数据模型
 │   ├── routes/               # 路由
+│   ├── scripts/              # 数据库初始化脚本
 │   ├── app.js                # 服务入口
 │   ├── .env                  # 数据库凭据（不纳入版本管理）
 │   ├── Wanghl_interface.md   # 接口记录
@@ -80,12 +81,19 @@ npm start
 | 页面 | 路径 | 说明 |
 | --- | --- | --- |
 | 项目首页 | `frontend/index.html` | 项目信息、页面导航、Canvas 粒子背景动画 |
+| 数据库连接 | `frontend/database.html` | 输入 MySQL 用户名与密码，测试数据库连通性 |
+| 科技新闻 | `frontend/news.html` | 数据库驱动的新闻列表、分类筛选、搜索与分页 |
+| 图文列表 | `frontend/gallery.html` | 图文卡片网格、关键词搜索、分类筛选与分页，展示接口链接与原始 JSON |
 
 ## 接口一览
 
 | 接口路径 | 方法 | 说明 |
 | --- | --- | --- |
 | `/api/test` | GET | 接口连通性测试 |
+| `/api/db/info` | GET | 获取数据库主机、端口与目标库名（不含密码） |
+| `/api/db/test` | POST | 使用传入的用户名、密码测试 MySQL 连接 |
+| `/api/news` | GET | 科技新闻列表，支持 `page`、`pageSize`、`category`、`keyword` |
+| `/api/gallery` | GET | 图文列表，支持 `page`、`pageSize`、`category`、`keyword` |
 
 统一响应格式：
 

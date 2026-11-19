@@ -1,0 +1,200 @@
+/*
+ * 姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE DeepSeek-V4.1-Flash
+ */
+.Wanghl_gallery-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  gap: 22px;
+  margin-top: 22px;
+  align-items: start;
+}
+
+.Wanghl_gallery-main {
+  padding: 28px;
+}
+
+.Wanghl_gallery-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--Wanghl-line);
+}
+
+.Wanghl_gallery-total {
+  flex-shrink: 0;
+  font-size: 12.5px;
+  color: #5d7288;
+  background: #f2f7fd;
+  border-radius: 999px;
+  padding: 6px 13px;
+}
+
+/* 图文网格 */
+.Wanghl_gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+}
+
+.Wanghl_gallery-card {
+  background: #fff;
+  border: 1px solid rgba(20, 60, 120, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  animation: Wanghl_galleryIn 0.45s ease-out both;
+}
+
+.Wanghl_gallery-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(5, 109, 232, 0.3);
+  box-shadow: 0 16px 34px rgba(5, 109, 232, 0.16);
+}
+
+.Wanghl_gallery-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dbe9fa, #eef5ff);
+}
+
+.Wanghl_gallery-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.Wanghl_gallery-card:hover .Wanghl_gallery-media img {
+  transform: scale(1.06);
+}
+
+.Wanghl_gallery-media--fallback::after {
+  content: '图片暂不可用';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: #7d93ab;
+  background: linear-gradient(135deg, #dbe9fa, #eef5ff);
+}
+
+.Wanghl_gallery-cat {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(5, 109, 232, 0.92), rgba(46, 139, 255, 0.92));
+  border-radius: 999px;
+  padding: 4px 11px;
+  box-shadow: 0 6px 14px rgba(5, 109, 232, 0.3);
+}
+
+.Wanghl_gallery-body {
+  padding: 16px 18px 18px;
+}
+
+.Wanghl_gallery-title {
+  font-size: 15.5px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #14304f;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.Wanghl_gallery-desc {
+  font-size: 12.8px;
+  line-height: 1.75;
+  color: #6b7f95;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.Wanghl_gallery-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(20, 60, 120, 0.09);
+  font-size: 11.5px;
+  color: #93a4b8;
+}
+
+.Wanghl_gallery-meta strong {
+  font-weight: 600;
+  color: #5b7288;
+}
+
+.Wanghl_gallery-like {
+  margin-left: auto;
+  color: #e0533d;
+  font-weight: 600;
+}
+
+/* 骨架屏 */
+.Wanghl_gallery-skeleton {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 60, 120, 0.08);
+  background: #fbfdff;
+}
+
+.Wanghl_gallery-skeleton-media {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(90deg, #eef3f9 25%, #e2eaf4 37%, #eef3f9 63%);
+  background-size: 400% 100%;
+  animation: Wanghl_shimmer 1.4s ease infinite;
+}
+
+.Wanghl_gallery-skeleton-body {
+  padding: 16px 18px 18px;
+}
+
+@keyframes Wanghl_galleryIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .Wanghl_gallery-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .Wanghl_gallery-main {
+    padding: 20px 16px;
+  }
+
+  .Wanghl_gallery-head {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .Wanghl_gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

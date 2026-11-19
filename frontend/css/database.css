@@ -1,0 +1,257 @@
+/*
+ * 姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE DeepSeek-V4.1-Flash
+ */
+.Wanghl_db-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 22px;
+  margin-top: 22px;
+  align-items: start;
+}
+
+.Wanghl_panel--form {
+  padding: 30px;
+}
+
+/* 表单 */
+.Wanghl_form {
+  display: grid;
+  gap: 18px;
+}
+
+.Wanghl_field {
+  display: grid;
+  gap: 8px;
+}
+
+.Wanghl_field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #33506f;
+  letter-spacing: 0.5px;
+}
+
+.Wanghl_input-wrap {
+  position: relative;
+}
+
+.Wanghl_input-wrap .Wanghl_input {
+  padding-right: 62px;
+}
+
+.Wanghl_eye {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--Wanghl_blue);
+  background: rgba(5, 109, 232, 0.08);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.Wanghl_eye:hover {
+  background: rgba(5, 109, 232, 0.16);
+}
+
+/* 按钮 */
+.Wanghl_form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.Wanghl_btn {
+  height: 44px;
+  padding: 0 24px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.Wanghl_btn--primary {
+  color: #fff;
+  background: linear-gradient(135deg, #056de8, #2e8bff);
+  box-shadow: 0 10px 22px rgba(5, 109, 232, 0.28);
+}
+
+.Wanghl_btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(5, 109, 232, 0.34);
+}
+
+.Wanghl_btn--primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+.Wanghl_btn--ghost {
+  color: #3c5a7c;
+  background: #f2f7fd;
+  border-color: rgba(20, 60, 120, 0.14);
+}
+
+.Wanghl_btn--ghost:hover {
+  background: #e8f1fb;
+}
+
+.Wanghl_btn--link {
+  color: #6b7f95;
+  background: transparent;
+  padding: 0 8px;
+}
+
+.Wanghl_btn--link:hover {
+  color: var(--Wanghl_blue);
+}
+
+/* 结果区域 */
+.Wanghl_result {
+  margin-top: 22px;
+  border-radius: 12px;
+  border: 1px dashed rgba(20, 60, 120, 0.16);
+  background: #fafcfe;
+  padding: 18px 20px;
+  font-size: 13.5px;
+  color: #7b8ba0;
+  line-height: 1.7;
+}
+
+.Wanghl_result-placeholder {
+  margin: 0;
+}
+
+.Wanghl_result--loading {
+  border-style: solid;
+  border-color: rgba(5, 109, 232, 0.24);
+  background: rgba(5, 109, 232, 0.06);
+  color: #2a5b96;
+}
+
+.Wanghl_result--success {
+  border-style: solid;
+  border-color: rgba(23, 166, 115, 0.32);
+  background: rgba(23, 166, 115, 0.07);
+  color: #10664a;
+}
+
+.Wanghl_result--error {
+  border-style: solid;
+  border-color: rgba(224, 83, 61, 0.32);
+  background: rgba(224, 83, 61, 0.07);
+  color: #a03a29;
+}
+
+.Wanghl_result-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.Wanghl_result-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+}
+
+.Wanghl_result--success .Wanghl_result-icon {
+  background: #17a673;
+}
+
+.Wanghl_result--error .Wanghl_result-icon {
+  background: #e0533d;
+}
+
+.Wanghl_result--loading .Wanghl_result-icon {
+  background: #056de8;
+}
+
+.Wanghl_result-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.Wanghl_result-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.Wanghl_result-list span {
+  flex-shrink: 0;
+  min-width: 78px;
+  opacity: 0.72;
+}
+
+.Wanghl_result-list strong {
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.Wanghl_result-detail {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(224, 83, 61, 0.24);
+  font-size: 12.5px;
+  word-break: break-all;
+  opacity: 0.85;
+}
+
+/* 响应式 */
+@media (max-width: 900px) {
+  .Wanghl_db-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .Wanghl_hero--compact {
+    padding: 26px 20px;
+  }
+
+  .Wanghl_hero-title--sm {
+    font-size: 26px;
+  }
+
+  .Wanghl_panel--form {
+    padding: 22px 18px;
+  }
+
+  .Wanghl_form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .Wanghl_btn {
+    width: 100%;
+  }
+}

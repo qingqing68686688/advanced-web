@@ -1,0 +1,254 @@
+/*
+ * 姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE DeepSeek-V4.1-Flash
+ * 页面共用组件样式：搜索、分页、状态、骨架屏、接口卡片、分类按钮
+ */
+/* 搜索栏 */
+.Wanghl_search {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.Wanghl_search .Wanghl_input {
+  flex: 1;
+  height: 42px;
+}
+
+.Wanghl_search-btn {
+  height: 42px;
+  padding: 0 20px;
+  font-size: 13.5px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #056de8, #2e8bff);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.Wanghl_search-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(5, 109, 232, 0.26);
+}
+
+/* 分页 */
+.Wanghl_pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.Wanghl_pager-btn {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #3c5a7c;
+  background: #f2f7fd;
+  border: 1px solid rgba(20, 60, 120, 0.14);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.Wanghl_pager-btn:hover:not(:disabled) {
+  background: #e4eefb;
+  color: #056de8;
+}
+
+.Wanghl_pager-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.Wanghl_pager-info {
+  font-size: 12.5px;
+  color: #7b8ba0;
+}
+
+/* 侧栏接口卡片 */
+.Wanghl_api-link {
+  display: block;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 13px;
+  color: #056de8;
+  background: rgba(5, 109, 232, 0.07);
+  border: 1px dashed rgba(5, 109, 232, 0.3);
+  border-radius: 9px;
+  padding: 12px 14px;
+  text-decoration: none;
+  word-break: break-all;
+  transition: background 0.2s ease;
+}
+
+.Wanghl_api-link:hover {
+  background: rgba(5, 109, 232, 0.12);
+}
+
+.Wanghl_api-note {
+  font-size: 12px;
+  color: #93a4b8;
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+.Wanghl_api-note code {
+  font-family: 'Consolas', 'Courier New', monospace;
+  color: #4d6b8c;
+  background: #f2f7fd;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.Wanghl_json-toggle {
+  width: 100%;
+  height: 38px;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-family: inherit;
+  color: #3c5a7c;
+  background: #f2f7fd;
+  border: 1px solid rgba(20, 60, 120, 0.14);
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.Wanghl_json-toggle:hover {
+  background: #e8f1fb;
+}
+
+.Wanghl_json {
+  margin-top: 12px;
+  max-height: 340px;
+  overflow: auto;
+  background: #0c2138;
+  color: #cfe6ff;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 11.5px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* 分类 */
+.Wanghl_cat-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.Wanghl_cat-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #4a647f;
+  background: #f8fbfe;
+  border: 1px solid rgba(20, 60, 120, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.Wanghl_cat-btn:hover {
+  border-color: rgba(5, 109, 232, 0.32);
+  color: #056de8;
+}
+
+.Wanghl_cat-btn.Wanghl_cat-btn--active {
+  color: #fff;
+  background: linear-gradient(135deg, #056de8, #2e8bff);
+  border-color: transparent;
+}
+
+.Wanghl_cat-count {
+  font-size: 11.5px;
+  opacity: 0.8;
+}
+
+/* 状态提示 */
+.Wanghl_state {
+  padding: 34px 20px;
+  text-align: center;
+  font-size: 13.5px;
+  color: #8c9cb0;
+  background: #fafcfe;
+  border: 1px dashed rgba(20, 60, 120, 0.16);
+  border-radius: 12px;
+}
+
+.Wanghl_state--error {
+  color: #a03a29;
+  background: rgba(224, 83, 61, 0.06);
+  border-color: rgba(224, 83, 61, 0.28);
+}
+
+.Wanghl_state-btn {
+  margin-top: 12px;
+  height: 34px;
+  padding: 0 16px;
+  font-size: 12.5px;
+  font-family: inherit;
+  color: #fff;
+  background: #e0533d;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 骨架屏 */
+.Wanghl_skeleton {
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: #fbfdff;
+  border: 1px solid rgba(20, 60, 120, 0.08);
+}
+
+.Wanghl_skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #eef3f9 25%, #e2eaf4 37%, #eef3f9 63%);
+  background-size: 400% 100%;
+  animation: Wanghl_shimmer 1.4s ease infinite;
+  margin-bottom: 10px;
+}
+
+.Wanghl_skeleton-line--title {
+  height: 16px;
+  width: 62%;
+}
+
+.Wanghl_skeleton-line--short {
+  width: 38%;
+  margin-bottom: 0;
+}
+
+@keyframes Wanghl_shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (max-width: 560px) {
+  .Wanghl_search {
+    flex-direction: column;
+  }
+
+  .Wanghl_search-btn {
+    width: 100%;
+  }
+}
