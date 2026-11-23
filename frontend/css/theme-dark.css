@@ -1,0 +1,628 @@
+/*
+ * 姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-23 | 大模型：TRAE DeepSeek-V4.1-Flash
+ * 深色科技主题：仅作用于带有 Wanghl_dark 类的页面（首页、AI 客服）
+ */
+body.Wanghl_dark {
+  --Wanghl-blue: #38a2ff;
+  --Wanghl-blue-light: #7cc4ff;
+  --Wanghl-ink: #e6f0ff;
+  --Wanghl-ink-soft: #9db3cc;
+  --Wanghl-line: rgba(120, 180, 255, 0.16);
+  --Wanghl-card: rgba(9, 24, 43, 0.72);
+  --Wanghl-shadow: 0 30px 80px rgba(0, 10, 30, 0.6);
+  color: var(--Wanghl-ink);
+}
+
+body.Wanghl_dark .Wanghl_glow {
+  opacity: 0.32;
+}
+
+/* 顶部主视觉 */
+body.Wanghl_dark .Wanghl_hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(14, 36, 64, 0.92), rgba(7, 20, 38, 0.88));
+  border: 1px solid rgba(90, 160, 255, 0.22);
+  box-shadow: var(--Wanghl-shadow), inset 0 1px 0 rgba(140, 200, 255, 0.14);
+  backdrop-filter: blur(16px);
+}
+
+body.Wanghl_dark .Wanghl_hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(56, 140, 255, 0.22), transparent 46%),
+    radial-gradient(circle at 88% 100%, rgba(0, 216, 255, 0.12), transparent 52%);
+  pointer-events: none;
+}
+
+/* 首页主视觉的品牌水印 */
+body.Wanghl_dark .Wanghl_hero:not(.Wanghl_hero--compact)::before {
+  content: '知';
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 230px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(120, 195, 255, 0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.Wanghl_dark .Wanghl_hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.Wanghl_dark .Wanghl_hero-eyebrow {
+  color: #8fd0ff;
+  background: rgba(56, 162, 255, 0.12);
+  border-color: rgba(120, 195, 255, 0.28);
+}
+
+body.Wanghl_dark .Wanghl_hero-title {
+  background: linear-gradient(115deg, #a8dcff 0%, #ffffff 42%, #5fa8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 12px 40px rgba(56, 162, 255, 0.18);
+}
+
+body.Wanghl_dark .Wanghl_hero-desc {
+  color: #a7bdd6;
+}
+
+body.Wanghl_dark .Wanghl_hero-meta {
+  border-top-color: rgba(120, 180, 255, 0.18);
+}
+
+body.Wanghl_dark .Wanghl_chip {
+  color: #bcd6f2;
+  background: rgba(56, 162, 255, 0.1);
+  border-color: rgba(120, 195, 255, 0.22);
+}
+
+body.Wanghl_dark .Wanghl_chip--solid {
+  color: #fff;
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(31, 123, 255, 0.35);
+}
+
+/* 数据统计 */
+body.Wanghl_dark .Wanghl_stat {
+  background: linear-gradient(160deg, rgba(20, 48, 82, 0.7), rgba(10, 26, 46, 0.7));
+  border-color: rgba(90, 160, 255, 0.18);
+}
+
+body.Wanghl_dark .Wanghl_stat:hover {
+  border-color: rgba(90, 180, 255, 0.45);
+  box-shadow: 0 12px 28px rgba(0, 40, 90, 0.5);
+}
+
+body.Wanghl_dark .Wanghl_stat-num {
+  background: linear-gradient(120deg, #a8dcff, #38a2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.Wanghl_dark .Wanghl_stat-label {
+  color: #8fa8c4;
+}
+
+/* 面板 */
+body.Wanghl_dark .Wanghl_panel {
+  background: linear-gradient(165deg, rgba(13, 32, 56, 0.86), rgba(8, 21, 38, 0.86));
+  border: 1px solid rgba(90, 160, 255, 0.18);
+  box-shadow: 0 22px 60px rgba(0, 10, 30, 0.5), inset 0 1px 0 rgba(140, 200, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+body.Wanghl_dark .Wanghl_panel-head,
+body.Wanghl_dark .Wanghl_stack {
+  border-color: rgba(120, 180, 255, 0.16);
+}
+
+body.Wanghl_dark .Wanghl_panel-title {
+  color: #eaf4ff;
+}
+
+body.Wanghl_dark .Wanghl_panel-title::before {
+  background: linear-gradient(180deg, #38a2ff, #00e0ff);
+  box-shadow: 0 0 12px rgba(56, 162, 255, 0.6);
+}
+
+body.Wanghl_dark .Wanghl_panel-sub {
+  color: #8298b0;
+}
+
+body.Wanghl_dark .Wanghl_counter {
+  color: #8fd0ff;
+  background: rgba(56, 162, 255, 0.12);
+}
+
+/* 导航卡片 */
+body.Wanghl_dark .Wanghl_nav-card {
+  background: linear-gradient(135deg, rgba(20, 48, 82, 0.72), rgba(10, 26, 46, 0.72));
+  border-color: rgba(90, 160, 255, 0.2);
+}
+
+body.Wanghl_dark .Wanghl_nav-card::after {
+  background: linear-gradient(115deg, transparent 30%, rgba(120, 200, 255, 0.18) 50%, transparent 70%);
+}
+
+body.Wanghl_dark .Wanghl_nav-card:hover {
+  border-color: rgba(90, 190, 255, 0.55);
+  box-shadow: 0 16px 36px rgba(0, 40, 90, 0.55), 0 0 0 1px rgba(90, 190, 255, 0.18);
+}
+
+body.Wanghl_dark .Wanghl_nav-icon {
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  box-shadow: 0 10px 22px rgba(31, 123, 255, 0.4);
+}
+
+body.Wanghl_dark .Wanghl_nav-title {
+  color: #eaf4ff;
+}
+
+body.Wanghl_dark .Wanghl_nav-desc {
+  color: #8fa8c4;
+}
+
+body.Wanghl_dark .Wanghl_nav-arrow {
+  color: #6cc4ff;
+}
+
+body.Wanghl_dark .Wanghl_planned-title {
+  color: #7d93ab;
+}
+
+body.Wanghl_dark .Wanghl_nav-card--disabled {
+  background: rgba(8, 20, 36, 0.5);
+  border-color: rgba(90, 160, 255, 0.12);
+}
+
+body.Wanghl_dark .Wanghl_nav-card--disabled .Wanghl_nav-icon {
+  background: rgba(90, 130, 180, 0.16);
+  color: #6f88a4;
+}
+
+body.Wanghl_dark .Wanghl_nav-card--disabled .Wanghl_nav-title {
+  color: #7f94ab;
+}
+
+body.Wanghl_dark .Wanghl_nav-card--disabled:hover {
+  border-color: rgba(90, 160, 255, 0.12);
+}
+
+body.Wanghl_dark .Wanghl_nav-tag {
+  color: #7d93ab;
+  border-color: rgba(120, 180, 255, 0.18);
+}
+
+/* 侧栏信息 */
+body.Wanghl_dark .Wanghl_info-row,
+body.Wanghl_dark .Wanghl_status-row {
+  color: #93aac4;
+  border-bottom-color: rgba(120, 180, 255, 0.1);
+}
+
+body.Wanghl_dark .Wanghl_info-row strong {
+  color: #e2eeff;
+}
+
+body.Wanghl_dark .Wanghl_stack-item {
+  color: #a8c4e0;
+  background: rgba(56, 162, 255, 0.1);
+}
+
+body.Wanghl_dark .Wanghl_status-row em {
+  color: #8fa8c4;
+}
+
+body.Wanghl_dark .Wanghl_status-row em.Wanghl_status--ok {
+  color: #3ddc97;
+}
+
+body.Wanghl_dark .Wanghl_status-row em.Wanghl_status--bad {
+  color: #ff7a63;
+}
+
+body.Wanghl_dark .Wanghl_status-dot {
+  background: #4b637d;
+  box-shadow: 0 0 0 3px rgba(75, 99, 125, 0.24);
+}
+
+body.Wanghl_dark .Wanghl_status-dot.Wanghl_status-dot--on {
+  background: #3ddc97;
+  box-shadow: 0 0 0 3px rgba(61, 220, 151, 0.18), 0 0 10px rgba(61, 220, 151, 0.5);
+}
+
+body.Wanghl_dark .Wanghl_status-dot.Wanghl_status-dot--bad {
+  background: #ff7a63;
+  box-shadow: 0 0 0 3px rgba(255, 122, 99, 0.18);
+}
+
+/* 接口速览 */
+body.Wanghl_dark .Wanghl_api-item {
+  background: rgba(16, 40, 70, 0.6);
+  border-color: rgba(90, 160, 255, 0.16);
+}
+
+body.Wanghl_dark .Wanghl_api-item:hover {
+  background: rgba(28, 66, 112, 0.72);
+  border-color: rgba(90, 190, 255, 0.5);
+}
+
+body.Wanghl_dark .Wanghl_api-path {
+  color: #cfe6ff;
+}
+
+body.Wanghl_dark .Wanghl_api-desc {
+  color: #7f95ad;
+}
+
+body.Wanghl_dark .Wanghl_api-method {
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+}
+
+body.Wanghl_dark .Wanghl_api-link {
+  color: #8fd0ff;
+  background: rgba(56, 162, 255, 0.1);
+  border-color: rgba(90, 180, 255, 0.34);
+}
+
+body.Wanghl_dark .Wanghl_api-link:hover {
+  background: rgba(56, 162, 255, 0.18);
+}
+
+body.Wanghl_dark .Wanghl_api-note {
+  color: #8298b0;
+}
+
+body.Wanghl_dark .Wanghl_api-note code {
+  color: #bfe2ff;
+  background: rgba(56, 162, 255, 0.12);
+}
+
+/* 通用列表与输入 */
+body.Wanghl_dark .Wanghl_tips {
+  color: #93aac4;
+}
+
+body.Wanghl_dark .Wanghl_tips li::before {
+  background: linear-gradient(135deg, #38a2ff, #00e0ff);
+  box-shadow: 0 0 8px rgba(56, 162, 255, 0.6);
+}
+
+body.Wanghl_dark .Wanghl_input {
+  color: #e6f0ff;
+  background: rgba(10, 26, 46, 0.8);
+  border-color: rgba(90, 160, 255, 0.2);
+}
+
+body.Wanghl_dark .Wanghl_input::placeholder {
+  color: #6d829a;
+}
+
+body.Wanghl_dark .Wanghl_input:focus {
+  background: rgba(13, 34, 60, 0.92);
+  border-color: #38a2ff;
+  box-shadow: 0 0 0 4px rgba(56, 162, 255, 0.16);
+}
+
+/* 滚动条 */
+body.Wanghl_dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+body.Wanghl_dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.Wanghl_dark ::-webkit-scrollbar-thumb {
+  background: rgba(90, 150, 220, 0.28);
+  border-radius: 999px;
+}
+
+body.Wanghl_dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(90, 170, 255, 0.45);
+}
+
+/* ============ 全局背景与光效 ============ */
+body.Wanghl_dark {
+  background:
+    radial-gradient(circle at 16% 8%, rgba(31, 123, 255, 0.32) 0%, transparent 40%),
+    radial-gradient(circle at 86% 88%, rgba(0, 200, 255, 0.16) 0%, transparent 46%),
+    linear-gradient(150deg, #04101f 0%, #061c33 46%, #04101e 100%);
+  background-attachment: fixed;
+}
+
+/* 细网格纹理，增强科技纵深感 */
+body.Wanghl_dark::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(120, 180, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 180, 255, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at 50% 22%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 22%, #000 0%, transparent 78%);
+}
+
+body.Wanghl_dark .Wanghl_container {
+  padding-top: 34px;
+}
+
+/* ============ 新闻列表 ============ */
+body.Wanghl_dark .Wanghl_news-total,
+body.Wanghl_dark .Wanghl_gallery-total {
+  color: #8fd0ff;
+  background: rgba(56, 162, 255, 0.12);
+  border: 1px solid rgba(90, 180, 255, 0.24);
+}
+
+body.Wanghl_dark .Wanghl_news-card {
+  background: linear-gradient(158deg, rgba(18, 44, 76, 0.78), rgba(9, 24, 43, 0.78));
+  border-color: rgba(90, 160, 255, 0.16);
+}
+
+body.Wanghl_dark .Wanghl_news-card:hover {
+  border-color: rgba(90, 190, 255, 0.5);
+  box-shadow: 0 18px 40px rgba(0, 30, 70, 0.55);
+}
+
+body.Wanghl_dark .Wanghl_news-badge {
+  color: #8fd0ff;
+  background: rgba(56, 162, 255, 0.12);
+  border-color: rgba(90, 180, 255, 0.26);
+}
+
+body.Wanghl_dark .Wanghl_news-time {
+  color: #7d93ab;
+}
+
+body.Wanghl_dark .Wanghl_news-title {
+  color: #eaf4ff;
+}
+
+body.Wanghl_dark .Wanghl_news-summary {
+  color: #9db3cc;
+}
+
+body.Wanghl_dark .Wanghl_news-meta {
+  border-top-color: rgba(120, 180, 255, 0.12);
+  color: #7d93ab;
+}
+
+body.Wanghl_dark .Wanghl_news-meta strong {
+  color: #c3d9ef;
+}
+
+body.Wanghl_dark .Wanghl_news-tag {
+  color: #a8c4e0;
+  background: rgba(56, 162, 255, 0.1);
+  border: 1px solid rgba(90, 160, 255, 0.14);
+}
+
+/* ============ 图文列表 ============ */
+body.Wanghl_dark .Wanghl_gallery-card {
+  background: linear-gradient(165deg, rgba(18, 44, 76, 0.8), rgba(9, 24, 43, 0.8));
+  border-color: rgba(90, 160, 255, 0.16);
+}
+
+body.Wanghl_dark .Wanghl_gallery-card:hover {
+  border-color: rgba(90, 190, 255, 0.5);
+  box-shadow: 0 20px 44px rgba(0, 30, 70, 0.6);
+}
+
+body.Wanghl_dark .Wanghl_gallery-media {
+  background: linear-gradient(135deg, #0d2745, #12385f);
+}
+
+body.Wanghl_dark .Wanghl_gallery-media--fallback::after {
+  color: #7d93ab;
+  background: linear-gradient(135deg, #0d2745, #12385f);
+}
+
+body.Wanghl_dark .Wanghl_gallery-title {
+  color: #eaf4ff;
+}
+
+body.Wanghl_dark .Wanghl_gallery-desc {
+  color: #9db3cc;
+}
+
+body.Wanghl_dark .Wanghl_gallery-meta {
+  border-top-color: rgba(120, 180, 255, 0.12);
+  color: #7d93ab;
+}
+
+body.Wanghl_dark .Wanghl_gallery-meta strong {
+  color: #c3d9ef;
+}
+
+body.Wanghl_dark .Wanghl_gallery-like {
+  color: #ff8b74;
+}
+
+body.Wanghl_dark .Wanghl_gallery-skeleton {
+  background: rgba(13, 34, 60, 0.7);
+  border-color: rgba(90, 160, 255, 0.14);
+}
+
+body.Wanghl_dark .Wanghl_gallery-skeleton-media,
+body.Wanghl_dark .Wanghl_skeleton-line {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 62, 102, 0.5) 25%,
+    rgba(48, 92, 145, 0.7) 37%,
+    rgba(30, 62, 102, 0.5) 63%
+  );
+  background-size: 400% 100%;
+}
+
+/* ============ 通用组件：分页 / 分类 / 状态 ============ */
+body.Wanghl_dark .Wanghl_pager-btn {
+  color: #a8c4e0;
+  background: rgba(18, 42, 70, 0.7);
+  border-color: rgba(90, 160, 255, 0.18);
+}
+
+body.Wanghl_dark .Wanghl_pager-btn:hover:not(:disabled) {
+  color: #dcebff;
+  background: rgba(31, 74, 122, 0.8);
+  border-color: rgba(90, 190, 255, 0.4);
+}
+
+body.Wanghl_dark .Wanghl_pager-info {
+  color: #8fa8c4;
+}
+
+body.Wanghl_dark .Wanghl_json-toggle {
+  color: #a8c4e0;
+  background: rgba(18, 42, 70, 0.7);
+  border-color: rgba(90, 160, 255, 0.18);
+}
+
+body.Wanghl_dark .Wanghl_json-toggle:hover {
+  background: rgba(31, 74, 122, 0.85);
+  color: #dcebff;
+}
+
+body.Wanghl_dark .Wanghl_cat-btn {
+  color: #a8c4e0;
+  background: rgba(18, 42, 70, 0.6);
+  border-color: rgba(90, 160, 255, 0.14);
+}
+
+body.Wanghl_dark .Wanghl_cat-btn:hover {
+  color: #8fd0ff;
+  border-color: rgba(90, 190, 255, 0.42);
+}
+
+body.Wanghl_dark .Wanghl_cat-btn.Wanghl_cat-btn--active {
+  color: #fff;
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  border-color: transparent;
+  box-shadow: 0 10px 22px rgba(31, 123, 255, 0.32);
+}
+
+body.Wanghl_dark .Wanghl_state {
+  color: #9db3cc;
+  background: rgba(13, 34, 60, 0.6);
+  border-color: rgba(90, 160, 255, 0.2);
+}
+
+body.Wanghl_dark .Wanghl_state--error {
+  color: #ffb3a4;
+  background: rgba(255, 122, 99, 0.08);
+  border-color: rgba(255, 122, 99, 0.32);
+}
+
+body.Wanghl_dark .Wanghl_skeleton {
+  background: rgba(13, 34, 60, 0.7);
+  border-color: rgba(90, 160, 255, 0.12);
+}
+
+/* ============ 数据库页 ============ */
+body.Wanghl_dark .Wanghl_field-label {
+  color: #bcd6f2;
+}
+
+body.Wanghl_dark .Wanghl_eye {
+  color: #8fd0ff;
+  background: rgba(56, 162, 255, 0.14);
+}
+
+body.Wanghl_dark .Wanghl_eye:hover {
+  background: rgba(56, 162, 255, 0.26);
+}
+
+body.Wanghl_dark .Wanghl_btn--ghost {
+  color: #bcd6f2;
+  background: rgba(18, 42, 70, 0.7);
+  border-color: rgba(90, 160, 255, 0.22);
+}
+
+body.Wanghl_dark .Wanghl_btn--ghost:hover {
+  background: rgba(31, 74, 122, 0.85);
+}
+
+body.Wanghl_dark .Wanghl_btn--link {
+  color: #8fa8c4;
+}
+
+body.Wanghl_dark .Wanghl_btn--link:hover {
+  color: #8fd0ff;
+}
+
+body.Wanghl_dark .Wanghl_result {
+  color: #9db3cc;
+  background: rgba(13, 34, 60, 0.6);
+  border-color: rgba(90, 160, 255, 0.2);
+}
+
+body.Wanghl_dark .Wanghl_result--loading {
+  color: #bfe2ff;
+  background: rgba(56, 162, 255, 0.1);
+  border-color: rgba(56, 162, 255, 0.32);
+}
+
+body.Wanghl_dark .Wanghl_result--success {
+  color: #7ff0c0;
+  background: rgba(23, 166, 115, 0.12);
+  border-color: rgba(23, 166, 115, 0.36);
+}
+
+body.Wanghl_dark .Wanghl_result--error {
+  color: #ffb3a4;
+  background: rgba(255, 122, 99, 0.1);
+  border-color: rgba(255, 122, 99, 0.34);
+}
+
+body.Wanghl_dark .Wanghl_result-detail {
+  border-top-color: rgba(255, 122, 99, 0.28);
+}
+
+/* ============ 英雄区细节增强 ============ */
+body.Wanghl_dark .Wanghl_hero--compact {
+  padding: 34px 36px 30px;
+}
+
+body.Wanghl_dark .Wanghl_hero-eyebrow {
+  letter-spacing: 3px;
+}
+
+body.Wanghl_dark .Wanghl_footer {
+  color: #6d829a;
+}
+
+body.Wanghl_dark .Wanghl_footer-sub {
+  color: #5b7089;
+}
+
+/* ============ 窄屏适配 ============ */
+@media (max-width: 900px) {
+  body.Wanghl_dark .Wanghl_hero:not(.Wanghl_hero--compact)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  body.Wanghl_dark .Wanghl_container {
+    padding-top: 22px;
+  }
+
+  body.Wanghl_dark .Wanghl_hero--compact {
+    padding: 24px 18px 22px;
+  }
+}

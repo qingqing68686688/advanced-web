@@ -10,11 +10,34 @@
   <title>数据库连接 | 知乎的模仿与制作</title>
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/database.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <link rel="stylesheet" href="css/nav.css">
 </head>
-<body>
+<body class="Wanghl_dark">
   <canvas id="Wanghl_canvas" class="Wanghl_canvas"></canvas>
   <div class="Wanghl_glow Wanghl_glow--one"></div>
   <div class="Wanghl_glow Wanghl_glow--two"></div>
+
+  <header class="Wanghl_topbar">
+    <div class="Wanghl_topbar-inner">
+      <a class="Wanghl_brand" href="index.html">
+        <span class="Wanghl_brand-logo">知</span>
+        <span class="Wanghl_brand-text">知乎的模仿<em>与制作</em></span>
+      </a>
+      <nav class="Wanghl_topnav" aria-label="主导航">
+        <a class="Wanghl_topnav-link" href="index.html">首页</a>
+        <a class="Wanghl_topnav-link" href="news.html">科技新闻</a>
+        <a class="Wanghl_topnav-link" href="gallery.html">图文列表</a>
+        <a class="Wanghl_topnav-link is-active" href="database.html" aria-current="page">数据库</a>
+        <a class="Wanghl_topnav-link" href="chat.html">AI 客服</a>
+        <a class="Wanghl_topnav-link" href="kb.html">知识库</a>
+      </nav>
+      <div class="Wanghl_topbar-actions">
+        <a class="Wanghl_topbar-ask" href="chat.html">提问</a>
+        <span class="Wanghl_topbar-user" title="王慧琳 24001010731">王</span>
+      </div>
+    </div>
+  </header>
 
   <div class="Wanghl_container">
     <header class="Wanghl_hero Wanghl_hero--compact">
@@ -113,6 +136,7 @@
     </footer>
   </div>
 
+  <script src="js/Wanghl_api.js"></script>
   <script src="js/Wanghl_canvas.js"></script>
   <script src="js/database.js"></script>
 </body>

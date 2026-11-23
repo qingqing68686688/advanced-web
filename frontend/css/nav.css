@@ -1,0 +1,202 @@
+/*
+ * 姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-23 | 大模型：TRAE DeepSeek-V4.1-Flash
+ * 全站顶栏：知乎风格的品牌标识、主导航与提问入口
+ */
+.Wanghl_topbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(5, 14, 27, 0.78);
+  border-bottom: 1px solid rgba(90, 160, 255, 0.16);
+  box-shadow: 0 12px 34px rgba(0, 8, 24, 0.42);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+.Wanghl_topbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 62px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+/* 品牌标识 */
+.Wanghl_brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.Wanghl_brand-logo {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  font-size: 19px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  box-shadow: 0 8px 20px rgba(31, 123, 255, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.Wanghl_brand:hover .Wanghl_brand-logo {
+  transform: translateY(-1px) rotate(-4deg);
+  box-shadow: 0 12px 26px rgba(31, 123, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.Wanghl_brand-text {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  background: linear-gradient(115deg, #ffffff, #9fd4ff 60%, #5fa8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.Wanghl_brand-text em {
+  font-style: normal;
+  font-weight: 500;
+  opacity: 0.72;
+}
+
+/* 主导航 */
+.Wanghl_topnav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.Wanghl_topnav-link {
+  position: relative;
+  padding: 8px 14px;
+  font-size: 13.5px;
+  color: #9db3cc;
+  text-decoration: none;
+  border-radius: 9px;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.Wanghl_topnav-link:hover {
+  color: #dcebff;
+  background: rgba(56, 162, 255, 0.12);
+}
+
+.Wanghl_topnav-link.is-active {
+  color: #ffffff;
+  background: rgba(56, 162, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(90, 190, 255, 0.28);
+}
+
+.Wanghl_topnav-link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #38a2ff, #00e0ff);
+  box-shadow: 0 0 10px rgba(56, 162, 255, 0.8);
+}
+
+/* 右侧操作 */
+.Wanghl_topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.Wanghl_topbar-ask {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 17px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  box-shadow: 0 10px 22px rgba(31, 123, 255, 0.34);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Wanghl_topbar-ask:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(31, 123, 255, 0.46);
+}
+
+.Wanghl_topbar-user {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  color: #cfe6ff;
+  background: rgba(56, 162, 255, 0.14);
+  border: 1px solid rgba(120, 195, 255, 0.3);
+}
+
+/* 响应式 */
+@media (max-width: 980px) {
+  .Wanghl_topbar-inner {
+    gap: 16px;
+    padding: 0 18px;
+  }
+
+  .Wanghl_brand-text em {
+    display: none;
+  }
+
+  .Wanghl_topbar-user {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .Wanghl_topbar-inner {
+    height: 58px;
+  }
+
+  .Wanghl_brand-text {
+    display: none;
+  }
+
+  .Wanghl_topnav {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .Wanghl_topnav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .Wanghl_topnav-link {
+    padding: 7px 11px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Wanghl_topbar-ask {
+    padding: 0 13px;
+    font-size: 12.5px;
+  }
+}

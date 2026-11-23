@@ -6,6 +6,8 @@ const Wanghl_router = express.Router();
 const Wanghl_dbController = require('../controllers/Wanghl_dbController');
 const Wanghl_newsController = require('../controllers/Wanghl_newsController');
 const Wanghl_galleryController = require('../controllers/Wanghl_galleryController');
+const Wanghl_chatController = require('../controllers/Wanghl_chatController');
+const Wanghl_kbController = require('../controllers/Wanghl_kbController');
 
 // 测试接口
 Wanghl_router.get('/test', (req, res) => {
@@ -23,5 +25,32 @@ Wanghl_router.get('/news', Wanghl_newsController.Wanghl_getNewsList);
 
 // 图文列表
 Wanghl_router.get('/gallery', Wanghl_galleryController.Wanghl_getGalleryList);
+
+// AI 在线客服：对话配置（不含密钥）
+Wanghl_router.get('/chat/info', Wanghl_chatController.Wanghl_getChatInfo);
+
+// AI 在线客服：对话
+Wanghl_router.post('/chat', Wanghl_chatController.Wanghl_chat);
+
+// AI 在线客服：流式对话（SSE）
+Wanghl_router.post('/chat/stream', Wanghl_chatController.Wanghl_chatStream);
+
+// 知识库：配置与统计
+Wanghl_router.get('/kb/info', Wanghl_kbController.Wanghl_getInfo);
+
+// 知识库：文档列表
+Wanghl_router.get('/kb/documents', Wanghl_kbController.Wanghl_getDocuments);
+
+// 知识库：查看某个文档的分块
+Wanghl_router.get('/kb/chunks', Wanghl_kbController.Wanghl_getChunks);
+
+// 知识库：上传并解析文档
+Wanghl_router.post('/kb/upload', Wanghl_kbController.Wanghl_uploadMiddleware, Wanghl_kbController.Wanghl_upload);
+
+// 知识库：删除文档
+Wanghl_router.delete('/kb/documents', Wanghl_kbController.Wanghl_removeDocument);
+
+// 知识库：基于知识库的问答（RAG）
+Wanghl_router.post('/kb/ask', Wanghl_kbController.Wanghl_ask);
 
 module.exports = Wanghl_router;

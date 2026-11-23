@@ -1,0 +1,886 @@
+/*
+ * 姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-23 | 大模型：TRAE DeepSeek-V4.1-Flash
+ * AI 在线客服：三栏深色科技风样式
+ */
+.Wanghl_container--chat {
+  max-width: 1400px;
+}
+
+.Wanghl_hero--chat {
+  padding: 26px 30px 22px;
+}
+
+/* 深色主题下保持聊天页头部紧凑 */
+body.Wanghl_dark .Wanghl_hero--chat {
+  padding: 24px 28px 20px;
+}
+
+.Wanghl_hero--chat .Wanghl_hero-title--sm {
+  font-size: 32px;
+}
+
+.Wanghl_hero--chat .Wanghl_hero-desc {
+  max-width: 720px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.Wanghl_hero--chat .Wanghl_hero-meta {
+  margin-top: 18px;
+  padding-top: 16px;
+}
+
+/* 三栏布局 */
+.Wanghl_chat-layout {
+  display: grid;
+  grid-template-columns: 244px minmax(0, 1fr) 296px;
+  gap: 16px;
+  margin-top: 18px;
+  height: clamp(560px, calc(100vh - 320px), 780px);
+}
+
+.Wanghl_chat-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(170deg, rgba(12, 30, 52, 0.9), rgba(7, 19, 35, 0.9));
+  border: 1px solid rgba(90, 160, 255, 0.18);
+  box-shadow: 0 22px 60px rgba(0, 8, 24, 0.55), inset 0 1px 0 rgba(140, 200, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+/* 左栏：会话历史 */
+.Wanghl_chat-col-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(120, 180, 255, 0.14);
+}
+
+.Wanghl_chat-col-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #dcebff;
+}
+
+.Wanghl_session-new {
+  height: 30px;
+  padding: 0 11px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #bfe2ff;
+  background: rgba(56, 162, 255, 0.14);
+  border: 1px solid rgba(90, 180, 255, 0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Wanghl_session-new:hover {
+  background: rgba(56, 162, 255, 0.26);
+  box-shadow: 0 0 14px rgba(56, 162, 255, 0.3);
+}
+
+.Wanghl_session-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.Wanghl_session-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 11px;
+  border-radius: 10px;
+  background: rgba(18, 42, 70, 0.55);
+  border: 1px solid rgba(90, 160, 255, 0.12);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.Wanghl_session-item:hover {
+  background: rgba(28, 60, 98, 0.7);
+  border-color: rgba(90, 180, 255, 0.32);
+}
+
+.Wanghl_session-item.is-active {
+  background: linear-gradient(135deg, rgba(31, 123, 255, 0.28), rgba(0, 200, 255, 0.14));
+  border-color: rgba(90, 190, 255, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(120, 210, 255, 0.18);
+}
+
+.Wanghl_session-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.Wanghl_session-title {
+  font-size: 12.5px;
+  color: #d6e8fb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Wanghl_session-time {
+  font-size: 10.5px;
+  color: #7d93ab;
+}
+
+.Wanghl_session-del {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 1;
+  color: #7d93ab;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.Wanghl_session-item:hover .Wanghl_session-del {
+  opacity: 1;
+}
+
+.Wanghl_session-del:hover {
+  color: #ff8b74;
+  background: rgba(255, 122, 99, 0.12);
+}
+
+.Wanghl_session-foot {
+  padding-top: 12px;
+  margin-top: 10px;
+  border-top: 1px dashed rgba(120, 180, 255, 0.12);
+  font-size: 10.5px;
+  color: #6d829a;
+  text-align: center;
+}
+
+/* 中栏：对话 */
+.Wanghl_chat-main {
+  padding: 18px 20px 16px;
+}
+
+.Wanghl_chat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(120, 180, 255, 0.14);
+}
+
+.Wanghl_chat-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.Wanghl_chat-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  box-shadow: 0 0 22px rgba(56, 162, 255, 0.45);
+}
+
+.Wanghl_chat-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #eaf4ff;
+}
+
+.Wanghl_chat-sub {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  font-size: 11.5px;
+  color: #8fa8c4;
+}
+
+.Wanghl_chat-clear {
+  height: 32px;
+  padding: 0 13px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #9db3cc;
+  background: rgba(56, 162, 255, 0.08);
+  border: 1px solid rgba(90, 160, 255, 0.22);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.Wanghl_chat-clear:hover {
+  color: #bfe2ff;
+  background: rgba(56, 162, 255, 0.18);
+  border-color: rgba(90, 190, 255, 0.42);
+}
+
+/* 消息区域 */
+.Wanghl_chat-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 4px 8px;
+  scroll-behavior: smooth;
+}
+
+.Wanghl_msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: Wanghl_msgIn 0.3s ease-out both;
+}
+
+.Wanghl_msg--user {
+  flex-direction: row-reverse;
+}
+
+.Wanghl_msg-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  box-shadow: 0 0 14px rgba(56, 162, 255, 0.32);
+}
+
+.Wanghl_msg--user .Wanghl_msg-avatar {
+  background: linear-gradient(135deg, #3d5673, #5d7896);
+  box-shadow: none;
+}
+
+.Wanghl_msg-body {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.Wanghl_msg--user .Wanghl_msg-body {
+  align-items: flex-end;
+}
+
+.Wanghl_msg-bubble {
+  padding: 12px 15px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: #d7e7f8;
+  background: rgba(18, 42, 72, 0.82);
+  border: 1px solid rgba(90, 160, 255, 0.16);
+  word-break: break-word;
+}
+
+.Wanghl_msg--user .Wanghl_msg-bubble {
+  color: #fff;
+  background: linear-gradient(135deg, #1f7bff, #2f9dff);
+  border-color: transparent;
+  box-shadow: 0 12px 26px rgba(31, 123, 255, 0.28);
+}
+
+.Wanghl_msg-bubble--error {
+  color: #ffb3a4;
+  background: rgba(255, 122, 99, 0.1);
+  border-color: rgba(255, 122, 99, 0.34);
+}
+
+/* 消息内的 Markdown 样式 */
+.Wanghl_msg-bubble p {
+  margin: 0 0 8px;
+}
+
+.Wanghl_msg-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.Wanghl_msg-bubble strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.Wanghl_msg-bubble em {
+  color: #b9d4ef;
+}
+
+.Wanghl_msg-bubble code {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 12px;
+  color: #8fe3ff;
+  background: rgba(0, 200, 255, 0.1);
+  border: 1px solid rgba(0, 200, 255, 0.16);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
+.Wanghl_msg-bubble pre {
+  margin: 10px 0;
+  padding: 12px 14px;
+  overflow-x: auto;
+  background: rgba(3, 12, 24, 0.9);
+  border: 1px solid rgba(90, 160, 255, 0.18);
+  border-radius: 10px;
+}
+
+.Wanghl_msg-bubble pre code {
+  display: block;
+  padding: 0;
+  color: #cfe6ff;
+  background: transparent;
+  border: none;
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.Wanghl_msg-bubble ul,
+.Wanghl_msg-bubble ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.Wanghl_msg-bubble li {
+  margin-bottom: 4px;
+}
+
+.Wanghl_msg-bubble h3,
+.Wanghl_msg-bubble h4 {
+  margin: 12px 0 6px;
+  font-size: 14px;
+  color: #eaf4ff;
+}
+
+.Wanghl_msg-bubble a {
+  color: #6cc4ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.Wanghl_msg--user .Wanghl_msg-bubble code {
+  color: #eaf6ff;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.Wanghl_msg--user .Wanghl_msg-bubble strong {
+  color: #fff;
+}
+
+/* 流式光标 */
+.Wanghl_cursor {
+  display: inline-block;
+  width: 7px;
+  height: 15px;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: #5fc8ff;
+  border-radius: 2px;
+  animation: Wanghl_blink 0.9s step-end infinite;
+}
+
+@keyframes Wanghl_blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 消息操作 */
+.Wanghl_msg-actions {
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.Wanghl_msg:hover .Wanghl_msg-actions {
+  opacity: 1;
+}
+
+.Wanghl_msg-action {
+  padding: 3px 9px;
+  font-size: 11px;
+  font-family: inherit;
+  color: #8fa8c4;
+  background: rgba(56, 162, 255, 0.08);
+  border: 1px solid rgba(90, 160, 255, 0.18);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.Wanghl_msg-action:hover {
+  color: #bfe2ff;
+  background: rgba(56, 162, 255, 0.2);
+}
+
+.Wanghl_msg-meta {
+  font-size: 11px;
+  color: #6d829a;
+}
+
+/* 打字动画 */
+.Wanghl_typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 2px;
+}
+
+.Wanghl_typing i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5fa8ff;
+  animation: Wanghl_typing 1.2s ease-in-out infinite;
+}
+
+.Wanghl_typing i:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.Wanghl_typing i:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes Wanghl_typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@keyframes Wanghl_msgIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 推荐问题 */
+.Wanghl_chat-suggests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-left: 42px;
+}
+
+.Wanghl_suggest {
+  padding: 8px 13px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #a8c8e8;
+  background: rgba(56, 162, 255, 0.08);
+  border: 1px dashed rgba(90, 180, 255, 0.34);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.Wanghl_suggest:hover {
+  color: #d9eeff;
+  background: rgba(56, 162, 255, 0.18);
+  border-style: solid;
+  box-shadow: 0 0 16px rgba(56, 162, 255, 0.22);
+}
+
+/* 输入区 */
+.Wanghl_composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(120, 180, 255, 0.14);
+}
+
+.Wanghl_composer-input {
+  flex: 1;
+  min-height: 46px;
+  max-height: 132px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #e6f0ff;
+  background: rgba(8, 22, 40, 0.85);
+  border: 1px solid rgba(90, 160, 255, 0.22);
+  border-radius: 12px;
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Wanghl_composer-input::placeholder {
+  color: #6d829a;
+}
+
+.Wanghl_composer-input:focus {
+  border-color: #38a2ff;
+  box-shadow: 0 0 0 3px rgba(56, 162, 255, 0.16);
+}
+
+.Wanghl_composer-btn {
+  height: 46px;
+  padding: 0 24px;
+  font-size: 13.5px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #1f7bff, #38b6ff);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.Wanghl_composer-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(31, 123, 255, 0.4);
+}
+
+.Wanghl_composer-btn.is-stop {
+  background: linear-gradient(135deg, #e2553d, #ff8266);
+}
+
+.Wanghl_composer-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.Wanghl_composer-hint {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #6d829a;
+}
+
+/* 右栏：信息 */
+.Wanghl_chat-info {
+  gap: 0;
+  overflow-y: auto;
+}
+
+.Wanghl_chat-block {
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(120, 180, 255, 0.12);
+}
+
+.Wanghl_chat-block:first-child {
+  padding-top: 0;
+}
+
+.Wanghl_chat-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.Wanghl_chat-block-title {
+  margin-bottom: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #bfe2ff;
+}
+
+.Wanghl_api-link--static {
+  display: block;
+  cursor: default;
+}
+
+.Wanghl_chat-info-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #6cc4ff;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(108, 196, 255, 0.42);
+}
+
+.Wanghl_chat-info-link:hover {
+  color: #a8dcff;
+}
+
+.Wanghl_chat-meta {
+  list-style: none;
+  display: grid;
+  gap: 9px;
+}
+
+.Wanghl_chat-meta li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(120, 180, 255, 0.1);
+  font-size: 12px;
+}
+
+.Wanghl_chat-meta li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.Wanghl_chat-meta span {
+  flex-shrink: 0;
+  color: #7d93ab;
+}
+
+.Wanghl_chat-meta em {
+  font-style: normal;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 11.5px;
+  color: #cfe6ff;
+  text-align: right;
+  word-break: break-all;
+}
+
+.Wanghl_chat-meta em.is-ok {
+  color: #3ddc97;
+}
+
+.Wanghl_chat-meta em.is-bad {
+  color: #ff7a63;
+}
+
+.Wanghl_usage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.Wanghl_usage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 11px 8px;
+  border-radius: 10px;
+  background: rgba(18, 42, 70, 0.6);
+  border: 1px solid rgba(90, 160, 255, 0.14);
+}
+
+.Wanghl_usage-num {
+  font-size: 19px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #a8dcff, #38a2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.Wanghl_usage-label {
+  font-size: 10.5px;
+  color: #7d93ab;
+}
+
+/* 响应式 */
+@media (max-width: 1200px) {
+  .Wanghl_chat-layout {
+    grid-template-columns: 232px minmax(0, 1fr);
+  }
+
+  .Wanghl_chat-info {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .Wanghl_chat-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .Wanghl_chat-history {
+    max-height: 200px;
+  }
+
+  .Wanghl_chat-main {
+    height: 560px;
+  }
+
+  .Wanghl_chat-info {
+    display: flex;
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  .Wanghl_hero--chat {
+    padding: 22px 18px 18px;
+  }
+
+  .Wanghl_hero--chat .Wanghl_hero-title--sm {
+    font-size: 26px;
+  }
+
+  .Wanghl_chat-main {
+    height: 520px;
+    padding: 14px 14px 12px;
+  }
+
+  .Wanghl_msg-body {
+    max-width: 86%;
+  }
+
+  .Wanghl_chat-suggests {
+    padding-left: 0;
+  }
+
+  .Wanghl_composer-btn {
+    padding: 0 16px;
+  }
+}
+
+/* ============ 视觉增强 ============ */
+.Wanghl_chat-main {
+  position: relative;
+  background: linear-gradient(172deg, rgba(15, 36, 62, 0.94), rgba(7, 19, 35, 0.94));
+}
+
+.Wanghl_chat-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: linear-gradient(90deg, transparent, #38a2ff 30%, #00e0ff 70%, transparent);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* 助手气泡：渐变底 + 细微内描边 */
+.Wanghl_msg--assistant .Wanghl_msg-bubble {
+  background: linear-gradient(160deg, rgba(24, 56, 94, 0.92), rgba(12, 30, 52, 0.92));
+  border-color: rgba(90, 160, 255, 0.18);
+  border-top-left-radius: 5px;
+  box-shadow: inset 0 0 0 1px rgba(90, 160, 255, 0.05), 0 10px 24px rgba(0, 12, 30, 0.32);
+}
+
+.Wanghl_msg--user .Wanghl_msg-bubble {
+  border-top-right-radius: 5px;
+}
+
+.Wanghl_msg-avatar {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.Wanghl_msg:hover .Wanghl_msg-avatar {
+  transform: translateY(-1px);
+}
+
+/* 输入区聚焦光效 */
+.Wanghl_composer:focus-within .Wanghl_composer-input {
+  border-color: rgba(90, 190, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(56, 162, 255, 0.14), 0 0 26px rgba(56, 162, 255, 0.16);
+}
+
+.Wanghl_composer-btn {
+  box-shadow: 0 10px 24px rgba(31, 123, 255, 0.28);
+}
+
+/* 会话列表选中态左侧高亮条 */
+.Wanghl_session-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.Wanghl_session-item.is-active::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #38a2ff, #00e0ff);
+  box-shadow: 0 0 10px rgba(56, 162, 255, 0.8);
+}
+
+/* 推荐问题悬浮 */
+.Wanghl_suggest {
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Wanghl_suggest:hover {
+  transform: translateY(-1px);
+}
+
+/* 触摸设备上始终显示消息操作按钮 */
+@media (hover: none) {
+  .Wanghl_msg-actions {
+    opacity: 1;
+  }
+
+  .Wanghl_session-del {
+    opacity: 0.7;
+  }
+}
+
+/* 聊天区滚动条更轻量 */
+.Wanghl_chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.Wanghl_chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(90, 150, 220, 0.24);
+  border-radius: 999px;
+}
+
+.Wanghl_chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(90, 170, 255, 0.42);
+}

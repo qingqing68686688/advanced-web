@@ -1,0 +1,161 @@
+<!--
+  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-23 | 大模型：TRAE DeepSeek-V4.1-Flash
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="知乎的模仿与制作 - 知识库管理与 RAG 问答（王慧琳 24001010731）">
+  <title>知识库问答 | 知乎的模仿与制作</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/kb.css">
+</head>
+<body class="Wanghl_dark">
+  <canvas id="Wanghl_canvas" class="Wanghl_canvas"></canvas>
+  <div class="Wanghl_glow Wanghl_glow--one"></div>
+  <div class="Wanghl_glow Wanghl_glow--two"></div>
+
+  <header class="Wanghl_topbar">
+    <div class="Wanghl_topbar-inner">
+      <a class="Wanghl_brand" href="index.html">
+        <span class="Wanghl_brand-logo">知</span>
+        <span class="Wanghl_brand-text">知乎的模仿<em>与制作</em></span>
+      </a>
+      <nav class="Wanghl_topnav" aria-label="主导航">
+        <a class="Wanghl_topnav-link" href="index.html">首页</a>
+        <a class="Wanghl_topnav-link" href="news.html">科技新闻</a>
+        <a class="Wanghl_topnav-link" href="gallery.html">图文列表</a>
+        <a class="Wanghl_topnav-link" href="database.html">数据库</a>
+        <a class="Wanghl_topnav-link" href="chat.html">AI 客服</a>
+        <a class="Wanghl_topnav-link is-active" href="kb.html" aria-current="page">知识库</a>
+      </nav>
+      <div class="Wanghl_topbar-actions">
+        <a class="Wanghl_topbar-ask" href="chat.html">提问</a>
+        <span class="Wanghl_topbar-user" title="王慧琳 24001010731">王</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="Wanghl_container Wanghl_container--kb">
+    <header class="Wanghl_hero Wanghl_hero--compact Wanghl_hero--kb">
+      <p class="Wanghl_hero-eyebrow">高级网页设计 · 课程项目</p>
+      <h1 class="Wanghl_hero-title Wanghl_hero-title--sm">知识库问答</h1>
+      <p class="Wanghl_hero-desc">
+        上传 PDF、Word、PPT、TXT、Markdown 文档，后端自动解析、分块并建立本地索引，回答时先检索相关片段再交给大模型生成，构建专属自动客服。
+      </p>
+      <div class="Wanghl_hero-meta">
+        <span class="Wanghl_chip Wanghl_chip--solid">RAG 检索增强</span>
+        <span class="Wanghl_chip">姓名：王慧琳</span>
+        <span class="Wanghl_chip">学号：24001010731</span>
+      </div>
+    </header>
+
+    <main class="Wanghl_kb-layout">
+      <!-- 左：知识库管理 -->
+      <aside class="Wanghl_kb-side">
+        <section class="Wanghl_kb-card">
+          <div class="Wanghl_kb-card-head">
+            <h2 class="Wanghl_kb-card-title">上传文档</h2>
+            <span class="Wanghl_kb-tag">≤ 15MB</span>
+          </div>
+
+          <label class="Wanghl_kb-drop" id="Wanghl_kbDrop" for="Wanghl_kbFile">
+            <input class="Wanghl_kb-file" id="Wanghl_kbFile" type="file" accept=".txt,.md,.pdf,.doc,.docx,.ppt,.pptx">
+            <span class="Wanghl_kb-drop-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 16V4"></path>
+                <path d="m7 9 5-5 5 5"></path>
+                <path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path>
+              </svg>
+            </span>
+            <span class="Wanghl_kb-drop-title">点击选择或拖拽文件到这里</span>
+            <span class="Wanghl_kb-drop-desc" id="Wanghl_kbSupported">支持 txt / md / pdf / doc / docx / ppt / pptx</span>
+          </label>
+
+          <p class="Wanghl_kb-upload-state" id="Wanghl_kbUploadState">尚未选择文件</p>
+        </section>
+
+        <section class="Wanghl_kb-card Wanghl_kb-card--grow">
+          <div class="Wanghl_kb-card-head">
+            <h2 class="Wanghl_kb-card-title">知识库文件</h2>
+            <span class="Wanghl_kb-count" id="Wanghl_kbDocCount">0 个</span>
+          </div>
+
+          <div class="Wanghl_kb-stats">
+            <div class="Wanghl_kb-stat">
+              <span class="Wanghl_kb-stat-num" id="Wanghl_kbStatDocs">0</span>
+              <span class="Wanghl_kb-stat-label">文档</span>
+            </div>
+            <div class="Wanghl_kb-stat">
+              <span class="Wanghl_kb-stat-num" id="Wanghl_kbStatChunks">0</span>
+              <span class="Wanghl_kb-stat-label">分块</span>
+            </div>
+            <div class="Wanghl_kb-stat">
+              <span class="Wanghl_kb-stat-num" id="Wanghl_kbStatChars">0</span>
+              <span class="Wanghl_kb-stat-label">字符</span>
+            </div>
+          </div>
+
+          <ul class="Wanghl_kb-doc-list" id="Wanghl_kbDocList"></ul>
+        </section>
+      </aside>
+
+      <!-- 右：知识库问答 -->
+      <section class="Wanghl_kb-main">
+        <div class="Wanghl_kb-main-head">
+          <div class="Wanghl_kb-main-identity">
+            <span class="Wanghl_kb-avatar">KB</span>
+            <div>
+              <h2 class="Wanghl_kb-main-title">知识库专属客服</h2>
+              <p class="Wanghl_kb-main-sub">
+                <span class="Wanghl_status-dot Wanghl_status-dot--on"></span>
+                <span id="Wanghl_kbModelText">正在读取知识库…</span>
+              </p>
+            </div>
+          </div>
+          <label class="Wanghl_kb-scope">
+            <span>检索范围</span>
+            <select class="Wanghl_kb-select" id="Wanghl_kbScope">
+              <option value="">全部文档</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="Wanghl_kb-log" id="Wanghl_kbLog"></div>
+
+        <div class="Wanghl_kb-suggests" id="Wanghl_kbSuggests">
+          <button class="Wanghl_kb-suggest" type="button">这个项目用到了哪些技术？</button>
+          <button class="Wanghl_kb-suggest" type="button">知识库支持哪些文件格式？</button>
+          <button class="Wanghl_kb-suggest" type="button">知识库问答的检索流程是什么？</button>
+        </div>
+
+        <form class="Wanghl_kb-composer" id="Wanghl_kbForm">
+          <textarea
+            class="Wanghl_kb-input"
+            id="Wanghl_kbInput"
+            rows="1"
+            maxlength="500"
+            placeholder="向知识库提问，Enter 发送，Shift + Enter 换行"
+            aria-label="输入知识库问题"
+          ></textarea>
+          <button class="Wanghl_kb-send" id="Wanghl_kbSend" type="submit">提问</button>
+        </form>
+        <p class="Wanghl_kb-hint">回答仅依据已上传文档生成，来源片段会一并展示；请求与响应会输出到浏览器控制台。</p>
+      </section>
+    </main>
+
+    <footer class="Wanghl_footer">
+      <p>© 2026 王慧琳 · 24001010731 · 知乎的模仿与制作</p>
+      <p class="Wanghl_footer-sub">高级网页设计课程项目 · 原生前端 + Express + 本地检索增强生成</p>
+    </footer>
+  </div>
+
+  <script src="js/Wanghl_api.js"></script>
+  <script src="js/Wanghl_canvas.js"></script>
+  <script src="js/kb.js"></script>
+</body>
+</html>

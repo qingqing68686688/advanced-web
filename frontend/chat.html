@@ -1,0 +1,154 @@
+<!--
+  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-23 | 大模型：TRAE DeepSeek-V4.1-Flash
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="知乎的模仿与制作 - AI 在线客服（王慧琳 24001010731）">
+  <title>AI 在线客服 | 知乎的模仿与制作</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/chat.css">
+</head>
+<body class="Wanghl_dark">
+  <canvas id="Wanghl_canvas" class="Wanghl_canvas"></canvas>
+  <div class="Wanghl_glow Wanghl_glow--one"></div>
+  <div class="Wanghl_glow Wanghl_glow--two"></div>
+
+  <header class="Wanghl_topbar">
+    <div class="Wanghl_topbar-inner">
+      <a class="Wanghl_brand" href="index.html">
+        <span class="Wanghl_brand-logo">知</span>
+        <span class="Wanghl_brand-text">知乎的模仿<em>与制作</em></span>
+      </a>
+      <nav class="Wanghl_topnav" aria-label="主导航">
+        <a class="Wanghl_topnav-link" href="index.html">首页</a>
+        <a class="Wanghl_topnav-link" href="news.html">科技新闻</a>
+        <a class="Wanghl_topnav-link" href="gallery.html">图文列表</a>
+        <a class="Wanghl_topnav-link" href="database.html">数据库</a>
+        <a class="Wanghl_topnav-link is-active" href="chat.html" aria-current="page">AI 客服</a>
+        <a class="Wanghl_topnav-link" href="kb.html">知识库</a>
+      </nav>
+      <div class="Wanghl_topbar-actions">
+        <a class="Wanghl_topbar-ask" href="chat.html">提问</a>
+        <span class="Wanghl_topbar-user" title="王慧琳 24001010731">王</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="Wanghl_container Wanghl_container--chat">
+    <header class="Wanghl_hero Wanghl_hero--compact Wanghl_hero--chat">
+      <p class="Wanghl_hero-eyebrow">高级网页设计 · 课程项目</p>
+      <h1 class="Wanghl_hero-title Wanghl_hero-title--sm">AI 在线客服</h1>
+      <p class="Wanghl_hero-desc">三栏式智能对话工作台：左侧管理本地会话，中间进行多轮问答，右侧查看模型与用量。密钥仅保存在后端 .env。</p>
+      <div class="Wanghl_hero-meta">
+        <span class="Wanghl_chip Wanghl_chip--solid">项目类别：模仿</span>
+        <span class="Wanghl_chip">姓名：王慧琳</span>
+        <span class="Wanghl_chip">学号：24001010731</span>
+      </div>
+    </header>
+
+    <main class="Wanghl_chat-layout">
+      <!-- 左：会话历史 -->
+      <aside class="Wanghl_chat-col Wanghl_chat-history">
+        <div class="Wanghl_chat-col-head">
+          <h2 class="Wanghl_chat-col-title">会话</h2>
+          <button class="Wanghl_session-new" id="Wanghl_newSession" type="button">＋ 新建</button>
+        </div>
+        <ul class="Wanghl_session-list" id="Wanghl_sessionList"></ul>
+        <p class="Wanghl_session-foot">会话保存在本机浏览器</p>
+      </aside>
+
+      <!-- 中：对话区 -->
+      <section class="Wanghl_chat-col Wanghl_chat-main">
+        <div class="Wanghl_chat-top">
+          <div class="Wanghl_chat-identity">
+            <span class="Wanghl_chat-avatar">AI</span>
+            <div>
+              <h2 class="Wanghl_chat-title">智能助手</h2>
+              <p class="Wanghl_chat-sub">
+                <span class="Wanghl_status-dot" id="Wanghl_chatStatusDot"></span>
+                <span id="Wanghl_chatModelText">正在连接模型…</span>
+              </p>
+            </div>
+          </div>
+          <button class="Wanghl_chat-clear" id="Wanghl_chatClear" type="button">清空对话</button>
+        </div>
+
+        <div class="Wanghl_chat-messages" id="Wanghl_chatMessages"></div>
+
+        <form class="Wanghl_composer" id="Wanghl_chatForm">
+          <textarea
+            class="Wanghl_composer-input"
+            id="Wanghl_chatInput"
+            rows="1"
+            maxlength="2000"
+            placeholder="输入你的问题，Enter 发送，Shift + Enter 换行"
+            aria-label="输入对话内容"
+          ></textarea>
+          <button class="Wanghl_composer-btn" id="Wanghl_chatSend" type="submit">发送</button>
+        </form>
+        <p class="Wanghl_composer-hint">回复由七牛云 AI 大模型生成，仅用于课程演示。</p>
+      </section>
+
+      <!-- 右：模型信息 -->
+      <aside class="Wanghl_chat-col Wanghl_chat-info">
+        <section class="Wanghl_chat-block">
+          <h2 class="Wanghl_chat-block-title">模型信息</h2>
+          <ul class="Wanghl_chat-meta">
+            <li><span>Model ID</span><em id="Wanghl_chatModel">加载中…</em></li>
+            <li><span>BaseURL</span><em id="Wanghl_chatBaseUrl">加载中…</em></li>
+            <li><span>密钥状态</span><em id="Wanghl_chatKeyState">检测中…</em></li>
+            <li><span>当前轮次</span><em id="Wanghl_chatTurns">0</em></li>
+          </ul>
+        </section>
+
+        <section class="Wanghl_chat-block">
+          <h2 class="Wanghl_chat-block-title">本次用量</h2>
+          <div class="Wanghl_usage">
+            <div class="Wanghl_usage-item">
+              <span class="Wanghl_usage-num" id="Wanghl_usagePrompt">0</span>
+              <span class="Wanghl_usage-label">输入 tokens</span>
+            </div>
+            <div class="Wanghl_usage-item">
+              <span class="Wanghl_usage-num" id="Wanghl_usageCompletion">0</span>
+              <span class="Wanghl_usage-label">输出 tokens</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="Wanghl_chat-block">
+          <h2 class="Wanghl_chat-block-title">后端接口</h2>
+          <code class="Wanghl_api-link Wanghl_api-link--static">POST /api/chat/stream</code>
+          <p class="Wanghl_api-note">
+            流式接口以 SSE 返回增量内容；<code>POST /api/chat</code> 为一次性返回版本。
+          </p>
+          <a class="Wanghl_chat-info-link" href="/api/chat/info" id="Wanghl_chatInfoLink" target="_blank" rel="noopener">查看 GET /api/chat/info</a>
+        </section>
+
+        <section class="Wanghl_chat-block">
+          <h2 class="Wanghl_chat-block-title">调试说明</h2>
+          <ul class="Wanghl_tips">
+            <li>浏览器控制台输出请求数据与完整回复。</li>
+            <li>后端控制台输出发给大模型的请求体与流式原始数据。</li>
+            <li>生成过程中可点击「停止」中断，已生成内容会保留。</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="Wanghl_footer">
+      <p>© 2026 王慧琳 · 24001010731 · 知乎的模仿与制作</p>
+      <p class="Wanghl_footer-sub">高级网页设计课程项目 · 原生前端 + Express + 七牛云 AI</p>
+    </footer>
+  </div>
+
+  <script src="js/Wanghl_api.js"></script>
+  <script src="js/Wanghl_canvas.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

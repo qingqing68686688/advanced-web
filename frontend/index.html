@@ -1,5 +1,5 @@
 <!--
-  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-19 | 大模型：TRAE DeepSeek-V4.1-Flash
+  姓名：王慧琳 | 学号：24001010731 | 时间：2026-11-23 | 大模型：TRAE DeepSeek-V4.1-Flash
 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -9,167 +9,100 @@
   <meta name="description" content="知乎的模仿与制作 - 王慧琳 24001010731 高级网页设计课程项目">
   <title>知乎的模仿与制作 | 项目首页</title>
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/feed.css">
 </head>
-<body>
+<body class="Wanghl_dark">
   <canvas id="Wanghl_canvas" class="Wanghl_canvas"></canvas>
   <div class="Wanghl_glow Wanghl_glow--one"></div>
   <div class="Wanghl_glow Wanghl_glow--two"></div>
 
-  <div class="Wanghl_container">
-    <header class="Wanghl_hero">
+  <header class="Wanghl_topbar">
+    <div class="Wanghl_topbar-inner">
+      <a class="Wanghl_brand" href="index.html">
+        <span class="Wanghl_brand-logo">知</span>
+        <span class="Wanghl_brand-text">知乎的模仿<em>与制作</em></span>
+      </a>
+      <nav class="Wanghl_topnav" aria-label="主导航">
+        <a class="Wanghl_topnav-link is-active" href="index.html" aria-current="page">首页</a>
+        <a class="Wanghl_topnav-link" href="news.html">科技新闻</a>
+        <a class="Wanghl_topnav-link" href="gallery.html">图文列表</a>
+        <a class="Wanghl_topnav-link" href="database.html">数据库</a>
+        <a class="Wanghl_topnav-link" href="chat.html">AI 客服</a>
+        <a class="Wanghl_topnav-link" href="kb.html">知识库</a>
+      </nav>
+      <div class="Wanghl_topbar-actions">
+        <a class="Wanghl_topbar-ask" href="chat.html">提问</a>
+        <span class="Wanghl_topbar-user" title="王慧琳 24001010731">王</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="Wanghl_container Wanghl_container--feed">
+    <header class="Wanghl_hero Wanghl_hero--compact Wanghl_hero--feed">
       <p class="Wanghl_hero-eyebrow">高级网页设计 · 课程项目</p>
-      <h1 class="Wanghl_hero-title">知乎的模仿与制作</h1>
+      <h1 class="Wanghl_hero-title Wanghl_hero-title--sm">知乎的模仿与制作</h1>
       <p class="Wanghl_hero-desc">
-        以原生 HTML、CSS、JavaScript 复刻知乎的问答社区体验，配合 Node.js + Express 与 MySQL 完成后端服务。
+        以原生 HTML、CSS、JavaScript 复刻知乎的问答社区体验，配合 Node.js + Express 与 MySQL 完成后端服务，并接入大模型与知识库问答。
       </p>
       <div class="Wanghl_hero-meta">
         <span class="Wanghl_chip Wanghl_chip--solid">项目类别：模仿</span>
         <span class="Wanghl_chip">姓名：王慧琳</span>
         <span class="Wanghl_chip">学号：24001010731</span>
       </div>
+
+      <div class="Wanghl_stats">
+        <div class="Wanghl_stat">
+          <span class="Wanghl_stat-num">6</span>
+          <span class="Wanghl_stat-label">已完成页面</span>
+        </div>
+        <div class="Wanghl_stat">
+          <span class="Wanghl_stat-num">14</span>
+          <span class="Wanghl_stat-label">后端接口</span>
+        </div>
+        <div class="Wanghl_stat">
+          <span class="Wanghl_stat-num">3</span>
+          <span class="Wanghl_stat-label">数据表</span>
+        </div>
+        <div class="Wanghl_stat">
+          <span class="Wanghl_stat-num" id="Wanghl_statRecords">—</span>
+          <span class="Wanghl_stat-label">数据库记录</span>
+        </div>
+      </div>
     </header>
 
-    <main class="Wanghl_main">
-      <section class="Wanghl_panel Wanghl_panel--nav">
-        <div class="Wanghl_panel-head">
-          <div>
-            <h2 class="Wanghl_panel-title">页面导航</h2>
-            <p class="Wanghl_panel-sub">点击卡片进入对应页面</p>
-          </div>
-          <span class="Wanghl_counter" id="Wanghl_pageCount">已完成 4 个页面</span>
-        </div>
+    <main class="Wanghl_feed-layout">
+      <!-- 左：信息流 -->
+      <section class="Wanghl_feed-main">
+        <nav class="Wanghl_feed-tabs" id="Wanghl_feedTabs" aria-label="信息流分类">
+          <button class="Wanghl_feed-tab is-active" type="button" data-tab="recommend">推荐</button>
+          <button class="Wanghl_feed-tab" type="button" data-tab="hot">热榜</button>
+          <button class="Wanghl_feed-tab" type="button" data-tab="news">科技</button>
+          <button class="Wanghl_feed-tab" type="button" data-tab="gallery">图文</button>
+          <span class="Wanghl_feed-tabs-count" id="Wanghl_feedCount">加载中…</span>
+        </nav>
 
-        <div class="Wanghl_nav-grid" id="Wanghl_navGrid">
-          <a class="Wanghl_nav-card" href="index.html">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 10.5 12 3l9 7.5"></path>
-                <path d="M5 9.5V21h14V9.5"></path>
-                <path d="M9.5 21v-6h5v6"></path>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">项目首页</span>
-              <span class="Wanghl_nav-desc">项目信息总览与全部页面导航入口</span>
-            </span>
-            <span class="Wanghl_nav-arrow" aria-hidden="true">→</span>
-          </a>
+        <ul class="Wanghl_feed-list" id="Wanghl_feedList"></ul>
 
-          <a class="Wanghl_nav-card" href="database.html">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <ellipse cx="12" cy="5.5" rx="8" ry="3"></ellipse>
-                <path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13"></path>
-                <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">数据库连接</span>
-              <span class="Wanghl_nav-desc">输入 MySQL 用户名与密码，测试数据库连通性</span>
-            </span>
-            <span class="Wanghl_nav-arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="Wanghl_nav-card" href="news.html">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h13a1 1 0 0 1 1 1v14a2 2 0 0 0 2 2H5a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1z"></path>
-                <path d="M18 8h3v11a2 2 0 0 1-2 2"></path>
-                <path d="M7 8h6"></path>
-                <path d="M7 12h6"></path>
-                <path d="M7 16h4"></path>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">科技新闻</span>
-              <span class="Wanghl_nav-desc">数据库驱动的新闻列表、分类筛选与分页</span>
-            </span>
-            <span class="Wanghl_nav-arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="Wanghl_nav-card" href="gallery.html">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                <circle cx="8.5" cy="9.5" r="1.6"></circle>
-                <path d="m3 16.5 5-4.5 4 3.5 3-2.5 6 4.5"></path>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">图文列表</span>
-              <span class="Wanghl_nav-desc">图片与文字卡片、关键词搜索与分类筛选</span>
-            </span>
-            <span class="Wanghl_nav-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <h3 class="Wanghl_planned-title">规划中的页面</h3>
-        <div class="Wanghl_nav-grid Wanghl_nav-grid--planned">
-          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                <path d="M12 11v6"></path>
-                <path d="M9 14h6"></path>
-                <path d="M8 3h8v4H8z"></path>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">登录 / 注册</span>
-              <span class="Wanghl_nav-desc">账号登录与注册表单</span>
-            </span>
-            <span class="Wanghl_nav-tag">规划中</span>
-          </div>
-
-          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"></path>
-                <path d="M9 11h6"></path>
-                <path d="M9 14.5h4"></path>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">问题与回答</span>
-              <span class="Wanghl_nav-desc">问题列表、详情与回答展示</span>
-            </span>
-            <span class="Wanghl_nav-tag">规划中</span>
-          </div>
-
-          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="4"></circle>
-                <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"></path>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">个人主页</span>
-              <span class="Wanghl_nav-desc">用户资料、动态与收藏</span>
-            </span>
-            <span class="Wanghl_nav-tag">规划中</span>
-          </div>
-
-          <div class="Wanghl_nav-card Wanghl_nav-card--disabled">
-            <span class="Wanghl_nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.6 8.6 15.4 3.4a2 2 0 0 0-2.8 0L3.4 12.6a2 2 0 0 0 0 2.8l5.2 5.2a2 2 0 0 0 2.8 0l9.2-9.2a2 2 0 0 0 0-2.8z"></path>
-                <path d="M7.5 10.5h4"></path>
-                <circle cx="8.5" cy="15.5" r="1.2"></circle>
-              </svg>
-            </span>
-            <span class="Wanghl_nav-body">
-              <span class="Wanghl_nav-title">话题广场</span>
-              <span class="Wanghl_nav-desc">按话题浏览内容与关注</span>
-            </span>
-            <span class="Wanghl_nav-tag">规划中</span>
-          </div>
+        <div class="Wanghl_feed-more">
+          <a class="Wanghl_feed-more-link" href="news.html">进入科技新闻列表 →</a>
+          <a class="Wanghl_feed-more-link" href="gallery.html">进入图文列表 →</a>
         </div>
       </section>
 
-      <aside class="Wanghl_side">
-        <section class="Wanghl_panel">
-          <h2 class="Wanghl_panel-title">项目概览</h2>
+      <!-- 右：热榜与项目信息 -->
+      <aside class="Wanghl_feed-side">
+        <section class="Wanghl_feed-card">
+          <div class="Wanghl_feed-card-head">
+            <h2 class="Wanghl_feed-card-title">全站热榜</h2>
+            <a class="Wanghl_feed-card-more" href="news.html">更多</a>
+          </div>
+          <ol class="Wanghl_hot-list" id="Wanghl_hotList"></ol>
+        </section>
+
+        <section class="Wanghl_feed-card">
+          <h2 class="Wanghl_feed-card-title">项目概览</h2>
           <ul class="Wanghl_info-list">
             <li class="Wanghl_info-row"><span>项目名称</span><strong>知乎的模仿与制作</strong></li>
             <li class="Wanghl_info-row"><span>项目类别</span><strong>模仿</strong></li>
@@ -183,11 +116,13 @@
             <span class="Wanghl_stack-item">Node.js</span>
             <span class="Wanghl_stack-item">Express</span>
             <span class="Wanghl_stack-item">MySQL</span>
+            <span class="Wanghl_stack-item">七牛云 AI</span>
+            <span class="Wanghl_stack-item">RAG</span>
           </div>
         </section>
 
-        <section class="Wanghl_panel">
-          <h2 class="Wanghl_panel-title">服务状态</h2>
+        <section class="Wanghl_feed-card">
+          <h2 class="Wanghl_feed-card-title">服务状态</h2>
           <ul class="Wanghl_status-list">
             <li class="Wanghl_status-row">
               <span class="Wanghl_status-dot Wanghl_status-dot--on"></span>
@@ -200,9 +135,60 @@
               <em id="Wanghl_apiText">检测中…</em>
             </li>
             <li class="Wanghl_status-row">
-              <span class="Wanghl_status-dot"></span>
+              <span class="Wanghl_status-dot" id="Wanghl_dbDot"></span>
               <span>数据库</span>
-              <em>待接入</em>
+              <em id="Wanghl_dbText">检测中…</em>
+            </li>
+          </ul>
+        </section>
+
+        <section class="Wanghl_feed-card">
+          <div class="Wanghl_feed-card-head">
+            <h2 class="Wanghl_feed-card-title">接口速览</h2>
+            <span class="Wanghl_feed-card-more">点击查看 JSON</span>
+          </div>
+          <ul class="Wanghl_api-list">
+            <li>
+              <a class="Wanghl_api-item" href="/api/news?page=1&pageSize=3" target="_blank" rel="noopener">
+                <span class="Wanghl_api-method">GET</span>
+                <span class="Wanghl_api-path">/api/news</span>
+                <span class="Wanghl_api-desc">科技新闻</span>
+              </a>
+            </li>
+            <li>
+              <a class="Wanghl_api-item" href="/api/gallery?page=1&pageSize=3" target="_blank" rel="noopener">
+                <span class="Wanghl_api-method">GET</span>
+                <span class="Wanghl_api-path">/api/gallery</span>
+                <span class="Wanghl_api-desc">图文列表</span>
+              </a>
+            </li>
+            <li>
+              <a class="Wanghl_api-item" href="/api/kb/documents" target="_blank" rel="noopener">
+                <span class="Wanghl_api-method">GET</span>
+                <span class="Wanghl_api-path">/api/kb/documents</span>
+                <span class="Wanghl_api-desc">知识库</span>
+              </a>
+            </li>
+            <li>
+              <a class="Wanghl_api-item" href="/api/chat/info" target="_blank" rel="noopener">
+                <span class="Wanghl_api-method">GET</span>
+                <span class="Wanghl_api-path">/api/chat/info</span>
+                <span class="Wanghl_api-desc">客服配置</span>
+              </a>
+            </li>
+            <li>
+              <a class="Wanghl_api-item" href="/api/db/info" target="_blank" rel="noopener">
+                <span class="Wanghl_api-method">GET</span>
+                <span class="Wanghl_api-path">/api/db/info</span>
+                <span class="Wanghl_api-desc">数据库配置</span>
+              </a>
+            </li>
+            <li>
+              <a class="Wanghl_api-item" href="/api/test" target="_blank" rel="noopener">
+                <span class="Wanghl_api-method">GET</span>
+                <span class="Wanghl_api-path">/api/test</span>
+                <span class="Wanghl_api-desc">连通性测试</span>
+              </a>
             </li>
           </ul>
         </section>
@@ -211,11 +197,13 @@
 
     <footer class="Wanghl_footer">
       <p>© 2026 王慧琳 · 24001010731 · 知乎的模仿与制作</p>
-      <p class="Wanghl_footer-sub">高级网页设计课程项目 · 原生前端 + Express + MySQL</p>
+      <p class="Wanghl_footer-sub">高级网页设计课程项目 · 原生前端 + Express + MySQL + 大模型</p>
     </footer>
   </div>
 
+  <script src="js/Wanghl_api.js"></script>
   <script src="js/Wanghl_canvas.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/feed.js"></script>
 </body>
 </html>

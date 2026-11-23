@@ -151,6 +151,100 @@ body {
   box-shadow: 0 8px 18px rgba(5, 109, 232, 0.28);
 }
 
+/* 顶部数据统计 */
+.Wanghl_stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.Wanghl_stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 10px;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #f7fbff, #eef5ff);
+  border: 1px solid rgba(5, 109, 232, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.Wanghl_stat:hover {
+  transform: translateY(-2px);
+  border-color: rgba(5, 109, 232, 0.32);
+  box-shadow: 0 10px 22px rgba(5, 109, 232, 0.12);
+}
+
+.Wanghl_stat-num {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #0b4fae, #2e8bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.Wanghl_stat-label {
+  font-size: 12px;
+  color: #8595a8;
+  letter-spacing: 0.5px;
+}
+
+/* 接口速览 */
+.Wanghl_api-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.Wanghl_api-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f7fafd;
+  border: 1px solid rgba(20, 60, 120, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.Wanghl_api-item:hover {
+  transform: translateX(3px);
+  background: #f2f8ff;
+  border-color: rgba(5, 109, 232, 0.4);
+}
+
+.Wanghl_api-method {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: linear-gradient(135deg, #056de8, #3f9bff);
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+
+.Wanghl_api-path {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1c3a5e;
+  font-family: ui-monospace, Consolas, 'Courier New', monospace;
+}
+
+.Wanghl_api-desc {
+  margin-left: auto;
+  font-size: 11.5px;
+  color: #93a4b8;
+}
+
 /* 主体两栏 */
 .Wanghl_main {
   display: grid;
@@ -587,6 +681,18 @@ body {
   .Wanghl_hero-meta {
     flex-direction: column;
     align-items: center;
+  }
+
+  .Wanghl_stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .Wanghl_stat-num {
+    font-size: 22px;
+  }
+
+  .Wanghl_api-desc {
+    display: none;
   }
 
   .Wanghl_panel,

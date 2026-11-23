@@ -69,7 +69,7 @@
   }
 
   // 读取后端数据库配置（不含密码）
-  fetch('/api/db/info')
+  fetch(Wanghl_apiUrl('/api/db/info'))
     .then(function (Wanghl_res) {
       return Wanghl_res.json();
     })
@@ -133,7 +133,7 @@
       Wanghl_controller.abort();
     }, 12000);
 
-    fetch('/api/db/test', {
+    fetch(Wanghl_apiUrl('/api/db/test'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user: Wanghl_user, password: Wanghl_password }),

@@ -232,11 +232,12 @@
     Wanghl_totalEl.textContent = '加载中…';
 
     const Wanghl_query = Wanghl_buildQuery();
-    const Wanghl_url = '/api/news?' + Wanghl_query;
+    const Wanghl_path = '/api/news?' + Wanghl_query;
+    const Wanghl_url = Wanghl_apiUrl(Wanghl_path);
 
     if (Wanghl_apiLink) {
       Wanghl_apiLink.href = Wanghl_url;
-      Wanghl_apiLink.textContent = 'GET /api/news?' + Wanghl_query;
+      Wanghl_apiLink.textContent = 'GET ' + Wanghl_path;
     }
 
     console.log('[Wanghl] 请求新闻接口：', Wanghl_url);
